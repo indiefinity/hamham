@@ -1,3 +1,4 @@
+var yipii = new Audio("yipii.mp3");
 function fuu() {
-    document.getElementById('nappula').innerHTML = '@';
+    yipii.play();
 }
