@@ -1,12 +1,29 @@
-﻿<html lang="fi">
-<head>
-    <link href="https://fonts.googleapis.com/css?family=ubuntu" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css.css">
-    <meta charset="utf-8">
-    <title>Hamham</title>
-    <script type="text/javascript" src="./emokid.js"></script>
-</head>
-<body>
-    <button id="nappula" onclick="fuu()"></button>
-</body>
-</html>
+﻿<html>
+    <head>
+        <title>Laske lasku</title>
+    </head>
+    <body>
+        <p id="pepe"></p>
+        <input id="input">
+        <button onclick="check">jatka</button>
+    </body>
+</html >
+<script>
+    console.log("baa")
+    var num1;
+    var num2;
+    function random(max) {
+        return Math.floor(Math.random() * max)
+    }
+    function noob() {
+        num1 = 1 + random(10);
+        num2 = 1 + random(10);
+        document.getElementById("pepe").innerHTML = num1 + "*" + num2;
+    }
+    noob();
+    function check() {
+        if (Number(document.getElementById("input").value) == num1 * num2) {
+            console.log("nice");
+        } 
+    }
+</script>
