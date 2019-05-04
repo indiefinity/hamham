@@ -1,29 +1,10 @@
 ﻿<html>
-    <head>
-        <title>Laske lasku</title>
-    </head>
-    <body>
-        <p id="pepe"></p>
-        <input id="input">
-        <button onclick="check">jatka</button>
-    </body>
+<head>
+    <script src="emokid.js"></script>
+    <title>Veikkaa</title>
+</head>
+<body>
+    <p id="pepe"></p>
+    <input type="text" id="tonttu"><button onclick="check()">Check</button>
+</body>
 </html >
-<script>
-    console.log("baa")
-    var num1;
-    var num2;
-    function random(max) {
-        return Math.floor(Math.random() * max)
-    }
-    function noob() {
-        num1 = 1 + random(10);
-        num2 = 1 + random(10);
-        document.getElementById("pepe").innerHTML = num1 + "*" + num2;
-    }
-    noob();
-    function check() {
-        if (Number(document.getElementById("input").value) == num1 * num2) {
-            console.log("nice");
-        } 
-    }
-</script>
