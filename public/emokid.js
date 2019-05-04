@@ -2,6 +2,7 @@ var guess;
 guess = 0;
 var oikee;
 oikee = Math.ceil(Math.random * 100);
+console.log(oikee);
 function check() {
     if (document.getElementById('tonttu').value == oikee) {
         document.getElementById('pepe').innerHTML = 'Good, your guesses: ' + guess;
