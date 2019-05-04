@@ -10,6 +10,6 @@ function check() {
         document.getElementById('pepe').innerHTML = 'too big';
     }
     else if (document.getElementById('tonttu').value < oikee) {
-        document.getElementById('pepe').innerHTML = 'too smell';
+        document.getElementById('pepe').innerHTML = 'too small';
     }
 }
