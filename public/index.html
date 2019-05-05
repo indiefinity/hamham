@@ -1,10 +1,16 @@
 ﻿<html>
-<head>
-    <script src="emokid.js"></script>
-    <title>Veikkaa</title>
-</head>
-<body>
-    <p id="pepe">veikkaa numeroa :))))))))))))))))))))))))))))))))))))))</p>
-    <input type="text" id="tonttu"><button onclick="check()">Check</button>
-</body>
-</html >
+    <head>
+        <title>Hamham</title>
+        <script src="./emokid.js"></script>
+    </head>
+    <body>
+        <div style="display:block" id="menu">
+            <p>Pelit:</p>
+            <button onclick="startGuess()">Arvaa numero</button>
+        </div>
+        <div style="display:none" id="guess">
+            <p id="guessPepe"></p>
+            <input id="guessInput"><button onclick="guessButton()">Veikkaa</button>
+        </div>
+    </body>
+</html>
