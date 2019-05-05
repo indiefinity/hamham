@@ -29,3 +29,8 @@ function guessButton() {
     }
     guessScore++;
 }
+function startMath() {
+    var mathNum1 = Math.ceil(Math.random() * 10);
+    var mathNum2 = Math.ceil(Math.random() * 10);
+    document.getElementById("mathPepe").innerHTML = mathNum1 + "*" + mathNum2;
+}
