@@ -13,12 +13,14 @@
 
         <div style="display:none" id="guess">
             <p id="guessPepe"></p>
-            <input id="guessInput"><button onclick="guessButton()">Veikkaa</button>
+            <input onfocus="this.value=''" id="guessInput"><button onclick="guessButton()">Veikkaa</button>
+            <button onclick="goToMenu()">Palaa</button>
         </div>
 
         <div style="display:none" id="math">
             <p id="mathPepe"></p>
-            <input id="mathInput"><button onclick="mathButton()">Vastaa</button>
+            <input onfocus="this.value=''" id="mathInput"><button onclick="mathButton()">Vastaa</button>
+            <button onclick="goToMenu()">Palaa</button>
         </div>
 
     </body>
