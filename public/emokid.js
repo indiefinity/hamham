@@ -21,7 +21,7 @@ function guessButton() {
     if (document.getElementById("guessInput").value == guessCorrect) {
         document.getElementById("guessPepe").innerHTML = "Hyvä! Arvasit väärin " + guessScore + " kertaa";
         setTimeout(function() {
-            goToMenu();
+            startGuess();
         },2000);
     }
     else if (Number(document.getElementById("guessInput").value) > guessCorrect) {
@@ -49,13 +49,13 @@ function mathButton() {
         mathNum2 = Math.ceil(Math.random() * 10);
         setTimeout(function() {
             document.getElementById("mathPepe").innerHTML = mathNum1 + "*" + mathNum2;
-        },1000);
+        },500);
         document.getElementById("mathPepe").innerHTML = "hyvä";
     }
     else {
         setTimeout(function() {
             document.getElementById("mathPepe").innerHTML = mathNum1 + "*" + mathNum2;
-        },1000);
+        },500);
         document.getElementById("mathPepe").innerHTML = "oot huono";
     }
 }
