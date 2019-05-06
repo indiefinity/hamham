@@ -22,7 +22,7 @@ function guessButton() {
         document.getElementById("guessPepe").innerHTML = "Hyvä! Arvasit väärin " + guessScore + " kertaa";
         setTimeout(function() {
             startGuess();
-        },2000);
+        },1000);
     }
     else if (Number(document.getElementById("guessInput").value) > guessCorrect) {
         document.getElementById("guessPepe").innerHTML = "pienempi";
