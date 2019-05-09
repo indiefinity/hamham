@@ -1,22 +1,27 @@
 var num1;
 var num2;
-function startMath() {
+function mathStart() {
   num1 = Math.ceil(Math.random() * 10);
   num2 = Math.ceil(Math.random() * 10);
-  document.getElementById("pepe").innerHTML = (num1 + "*" + num2);
+  document.getElementById("pepe").innerHTML = num1 + "*" + num2;
 }
-startMath();
-var input = document.getElementById("inp");
-input.addEventListener("keydown", function(event) {
-
+mathStart();
+document.getElementById("inputi")
+.addEventListener("keyup", function(event) {
+  event.preventDefault();
   if (event.keyCode === 13) {
-    event.preventDefault();
-
-    if (Number(input.value) == num1 * num2) {
-      document.getElementById("pepe").innerHTML = "gud";
+    if (Number(document.getElementById("inputi").value) == num1 * num2) {
+      document.getElementById("pepe").innerHTML = "hyvä";
       setTimeout(function() {
-      document.getElementById("pepe").innerHTML = num1 + "" + num2;
-    },500);
-
+        mathStart();
+      }, 500);
+    }
+    else {
+      document.getElementById("pepe").innerHTML = "huono";
+      setTimeout(function() {
+        mathStart();
+      }, 500);
+    }
+    document.getElementById("inputi").value = "";
   }
 });
