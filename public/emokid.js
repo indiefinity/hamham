@@ -1,27 +1,26 @@
-var num1;
-var num2;
-function mathStart() {
-  num1 = Math.ceil(Math.random() * 1000);
-  num2 = Math.ceil(Math.random() * 1000);
-  document.getElementById("pepe").innerHTML = num1 + "+" + num2;
+var bohe = new Audio("bohe.m4a")
+function sound() {
+    bohe.play();
 }
-mathStart();
-document.getElementById("inputi")
-.addEventListener("keyup", function(event) {
-  event.preventDefault();
-  if (event.keyCode === 13) {
-    if (Number(document.getElementById("inputi").value) == num1 + num2) {
-      document.getElementById("pepe").innerHTML = "hyvä";
-      setTimeout(function() {
-        mathStart();
-      }, 500);
+var red = 255;
+var green = 0;
+var blue = 0;
+function lol() {
+    if (red > 0 && blue == 0) {
+        red--;
+        green++;
     }
-    else {
-      document.getElementById("pepe").innerHTML = "huono";
-      setTimeout(function() {
-        mathStart();
-      }, 500);
+    else if (green > 0) {
+        green--;
+        blue++;
     }
-    document.getElementById("inputi").value = "";
-  }
-});
+    else if (blue > 0) {
+        blue--;
+        red++;
+    }
+    document.body.style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue +")";
+    setTimeout(function(){
+        lol();
+    }, 10);
+}
+lol();
