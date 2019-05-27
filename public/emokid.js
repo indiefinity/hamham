@@ -4,8 +4,10 @@ function sound() {
     bohe.currentTime = 0;
     bohe.play();
     document.getElementById("pappa").src = "aak.png";
+    document.getElementById("pappa").height = 125;
     setTimeout(function(){
         document.getElementById("pappa").src = "iik.png";
+        document.getElementById("pappa").height = 100;
     }, 750);
 }
 var red = 255;
