@@ -1,5 +1,7 @@
-var bohe = new Audio("bohe.m4a")
+var bohe = new Audio("bohe.mp3")
 function sound() {
+    bohe.pause();
+    bohe.currentTime = 0;
     bohe.play();
 }
 var red = 255;
