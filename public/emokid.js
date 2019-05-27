@@ -3,6 +3,10 @@ function sound() {
     bohe.pause();
     bohe.currentTime = 0;
     bohe.play();
+    document.getElementById("pappa").src = "aak.png";
+    setTimeout(function(){
+        document.getElementById("pappa").src = "iik.png";
+    }, 750);
 }
 var red = 255;
 var green = 0;
