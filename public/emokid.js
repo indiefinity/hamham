@@ -1,5 +1,5 @@
 function sound() {
-    var bohe = new Audio(Math.ceil(Math.random() * 3) + ".mp3")
+    var bohe = new Audio("./sounds/" + Math.ceil(Math.random() * 3) + ".mp3")
     bohe.pause();
     bohe.currentTime = 0;
     bohe.play();
