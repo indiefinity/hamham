@@ -1,5 +1,5 @@
-var bohe = new Audio("bohe.mp3")
 function sound() {
+    var bohe = new Audio(Math.ceil(Math.random() * 3) + ".mp3")
     bohe.pause();
     bohe.currentTime = 0;
     bohe.play();
@@ -8,7 +8,7 @@ function sound() {
     setTimeout(function(){
         document.getElementById("pappa").src = "iik.png";
         document.getElementById("pappa").height = 100;
-    }, 750);
+    }, 1000);
 }
 var red = 255;
 var green = 0;
