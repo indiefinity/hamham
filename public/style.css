@@ -1,3 +1,6 @@
+html {
+   font-family: ubuntu;
+}
 html, body, #wrapper {
    height:100%;
    width: 100%;
