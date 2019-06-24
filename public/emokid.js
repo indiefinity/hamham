@@ -8,13 +8,19 @@ function valmis() {
 }
 var deg = Math.random() * 180 - 90;
 var speed = 10000;
-var deggo;
+var finalDeg;
 function spin() {
     speed *= 0.995;
-    deggo = deg + speed;
-    document.getElementById("rotating").style.transform = "rotate(" + deggo + "deg)";
-    setTimeout(function() {
-        spin();
-    }, 1);
+    finalDeg = deg + speed;
+    document.getElementById("rotating").style.transform = "rotate(" + finalDeg + "deg)";
+    if (speed < 1) {
+        valmis();
+    }
+    else {
+        setTimeout(function() {
+            spin();
+        }, 1);
+    }
+
 }
 spin();
