@@ -1,9 +1,22 @@
-var deg = 1.0;
+function valmis() {
+    setTimeout(function() {
+        document.getElementById("rotating").innerHTML = "SPIN THE WHEEL MY";
+        setTimeout(function() {
+            document.getElementById("rotating").innerHTML = "SPIN THE WHEEL MY BABY";
+        }, 500);
+    }, 500);
+}
+var deg = 10000.0;
 function spin() {
     document.getElementById("rotating").style.transform = "rotate(" + deg + "deg)";
-    setTimeout(function() {
-        spin();
-    }, 1);
-    deg = deg * 1.005;
+    deg = deg * 0.995;
+    if (deg > 0.5) {
+        setTimeout(function() {
+            spin();
+        }, 1);
+    }
+    else {
+        valmis();
+    }
 }
 spin();
