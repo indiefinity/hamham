@@ -6,17 +6,15 @@ function valmis() {
         }, 250);
     }, 500);
 }
-var deg = 10000.0;
+var deg = Math.random() * 180 - 90;
+var speed = 10000;
+var deggo;
 function spin() {
-    document.getElementById("rotating").style.transform = "rotate(" + deg + "deg)";
-    deg = deg * 0.995;
-    if (deg > 0.5) {
-        setTimeout(function() {
-            spin();
-        }, 1);
-    }
-    else {
-        valmis();
-    }
+    speed *= 0.995;
+    deggo = deg + speed;
+    document.getElementById("rotating").style.transform = "rotate(" + deggo + "deg)";
+    setTimeout(function() {
+        spin();
+    }, 1);
 }
 spin();
