@@ -3,7 +3,7 @@ function valmis() {
         document.getElementById("rotating").innerHTML = "SPIN THE WHEEL MY";
         setTimeout(function() {
             document.getElementById("rotating").innerHTML = "SPIN THE WHEEL MY BABY";
-        }, 500);
+        }, 250);
     }, 500);
 }
 var deg = 10000.0;
