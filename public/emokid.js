@@ -1,26 +1,24 @@
-function valmis() {
-    setTimeout(function() {
-        document.getElementById("rotating").innerHTML = "SPIN THE WHEEL MY";
-        setTimeout(function() {
-            document.getElementById("rotating").innerHTML = "SPIN THE WHEEL MY BABY";
-        }, 250);
-    }, 500);
-}
-var deg = Math.random() * 180 - 90;
-var speed = 10000;
+var deg;
+var speed;
 var finalDeg;
-function spin() {
-    speed *= 0.995;
-    finalDeg = deg + speed;
-    document.getElementById("rotating").style.transform = "rotate(" + finalDeg + "deg)";
+function startSpin() {
+    document.getElementById("butt").style.display = "none";
+    deg = Math.random() * 45 - 22.5;
+    speed = 1000;
+    finalDeg;
+    spin();
+}
+function spin() {   
     if (speed < 1) {
-        valmis();
+        document.getElementById("butt").style.display = "block";
+        var audio = new Audio('bohe.mp3');
     }
     else {
         setTimeout(function() {
             spin();
         }, 1);
     }
-
+    speed *= 0.995;
+    finalDeg = deg + speed;
+    document.getElementById("text").style.transform = "rotate(" + finalDeg + "deg)";
 }
-spin();
