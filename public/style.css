@@ -1,10 +1,8 @@
+html {
+   font-family: Ubuntu;
+   background-image: linear-gradient(180deg, red, yellow, green)
+}
 #pepe {
-   font-family: ubuntu;
-   height:100%;
-   width: 100%;
-   margin: 0;
-   padding: 0;
-   overflow: hidden;
-   vertical-align: middle;
-   text-align: center;
+   position: absolute;
+   top: 150px;
 }
