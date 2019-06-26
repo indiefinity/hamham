@@ -1,8 +1,7 @@
 function thing() {
-  document.getElementById("pepe").style.top = Math.ceil(Math.random() * 250) + "px";
-  document.getElementById("pepe").style.left = Math.ceil(Math.random() * 250) + "px";
   setTimeout(function() {
     thing();
-  }, 100);
+  }, 1);
+  document.getElementById("pepe").style.transform = "rotate(" + Math.ceil(Math.random() * 22.5 - 11.25) + "deg)"
 }
 thing();

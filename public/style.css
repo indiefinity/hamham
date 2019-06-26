@@ -1,8 +1,10 @@
-html {
+#aka {
    font-family: Ubuntu;
-   background-image: linear-gradient(180deg, red, yellow, green)
-}
-#pepe {
-   position: absolute;
-   top: 150px;
+   height:100%;
+   width: 100%;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   vertical-align: middle;
+   text-align: center;
 }
