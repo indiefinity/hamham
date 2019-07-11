@@ -1,7 +1,7 @@
 var deggo = 500;
 var context = new AudioContext()
 var o = context.createOscillator()
-o.type = "sine"
+o.type = "sawtooth"
 o.connect(context.destination)
 function fuu() {
   o.frequency.value = document.getElementById("pepe").value;
