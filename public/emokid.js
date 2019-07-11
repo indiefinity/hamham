@@ -1,15 +1,19 @@
-var frequency;
-var context;
-var o;
+var deggo = 500;
+var context = new AudioContext()
+var o = context.createOscillator()
+o.type = "sine"
+o.connect(context.destination)
 function fuu() {
-  frequency = Math.ceil(Math.random() * 500 )+ 500;
-  context = new AudioContext();
-  o = context.createOscillator();
-  o.type = "sawtooth";
-  o.connect(context.destination);
-  o.frequency.value = frequency;
-  o.start();
+  o.frequency.value = document.getElementById("pepe").value;
+  setTimeout(function() {
+    fuu();
+  },  10)
 }
-function notFuu() {
-  window.close();
+function start() {
+  document.getElementById("papa").style.display = "none";
+  document.getElementById("pepe").style.display = "";
+  o.start()
+  fuu();
 }
+
+  
