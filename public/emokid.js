@@ -1,7 +1,6 @@
 var deggo = 500;
 var context = new AudioContext()
 var o = context.createOscillator()
-o.type = "sawtooth"
 o.connect(context.destination)
 function fuu() {
   o.frequency.value = document.getElementById("pepe").value;
@@ -9,11 +8,23 @@ function fuu() {
     fuu();
   },  10)
 }
-function start() {
-  document.getElementById("papa").style.display = "none";
-  document.getElementById("pepe").style.display = "";
+function startWave() {
   o.start()
   fuu();
 }
-
-  
+function startSine() {
+  o.type = "sine"
+  startWave()
+}
+function startSaw() {
+  o.type = "sawtooth"
+  startWave()
+}
+function startSqu() {
+  o.type = "square"
+  startWave()
+}
+function startTri() {
+  o.type = "triangle"
+  startWave()
+}
