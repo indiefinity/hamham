@@ -1,26 +1,15 @@
-var deggo = 1;
-function goLeft() {
-  if (deggo <= 2.5) {
-    goRight();
-  }
-  else {
-    setTimeout(function() {
-      goLeft();
-    }, 10);
-    deggo *= 0.99;
-  }
-  document.getElementById("pepe").style.transform = "rotate(" + deggo + "deg)"
+var frequency;
+var context;
+var o;
+function fuu() {
+  frequency = Math.ceil(Math.random() * 500 )+ 500;
+  context = new AudioContext();
+  o = context.createOscillator();
+  o.type = "sawtooth";
+  o.connect(context.destination);
+  o.frequency.value = frequency;
+  o.start();
 }
-function goRight() {
-  if (deggo >= 357.5) {
-    goLeft();
-  }
-  else {
-    setTimeout(function() {
-      goRight();
-    }, 10);
-    deggo *= 1.01;
-  }
-  document.getElementById("pepe").style.transform = "rotate(" + deggo + "deg)"
+function notFuu() {
+  window.close();
 }
-goLeft();
