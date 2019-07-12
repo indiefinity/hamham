@@ -8,22 +8,22 @@ o = context.createOscillator();
 gain= context.createGain();
 console.log("lol")
 function fuu() {
-  setTimeout(function() {
-    if (!onMenu) {
+  if (!onMenu) {
+    setTimeout(function() {
       fuu();
-    }
-  }, 1000)
-  context = new AudioContext();
-  o = context.createOscillator();
-  gain= context.createGain();
-  o.type = waveType;
-  o.connect(gain);
-  gain.connect(context.destination);
-  o.frequency.value = document.getElementById("pepe").value;
-  o.start(0);
-  
-  console.log(o.type)
-  gain.gain.linearRampToValueAtTime(0, 0.25);
+    }, 500)
+    context = new AudioContext();
+    o = context.createOscillator();
+    gain= context.createGain();
+    o.type = waveType;
+    o.connect(gain);
+    gain.connect(context.destination);
+    o.frequency.value = document.getElementById("pepe").value;
+    o.start(0);
+    
+    console.log(o.type)
+    gain.gain.linearRampToValueAtTime(0, 0.25);
+  }
 }
 function start() {
   document.getElementById("sine").style.display = "none";
@@ -52,12 +52,14 @@ function sawtooth()  {
   start();
 }
 function back() {
+  setTimeout(function() {
+    document.getElementById("sine").style.display = "";
+    document.getElementById("triangle").style.display = "";
+    document.getElementById("square").style.display = "";
+    document.getElementById("sawtooth").style.display = "";
+    document.getElementById("pepe").style.display = "none";
+    document.getElementById("back").style.display = "none";
+  }, 500)
   onMenu = true;
-  document.getElementById("sine").style.display = "";
-  document.getElementById("triangle").style.display = "";
-  document.getElementById("square").style.display = "";
-  document.getElementById("sawtooth").style.display = "";
-  document.getElementById("pepe").style.display = "none";
-  document.getElementById("back").style.display = "none";
 }
 
