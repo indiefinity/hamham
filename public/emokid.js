@@ -2,10 +2,16 @@ var context ;
 var o;
 var  gain;
 var waveType;
+var onMenu = false;
+context = new AudioContext();
+o = context.createOscillator();
+gain= context.createGain();
 console.log("lol")
 function fuu() {
   setTimeout(function() {
-    fuu();
+    if (!onMenu) {
+      fuu();
+    }
   }, 1000)
   context = new AudioContext();
   o = context.createOscillator();
@@ -25,8 +31,10 @@ function start() {
   document.getElementById("square").style.display = "none";
   document.getElementById("sawtooth").style.display = "none";
   document.getElementById("pepe").style.display = "";
+  document.getElementById("back").style.display = "";
+  onMenu = false;
+  fuu();
 }
-fuu();
 function sine()  {
   waveType = "sine";
   start();
@@ -43,6 +51,13 @@ function sawtooth()  {
   waveType = "sawtooth";
   start();
 }
-
-
+function back() {
+  onMenu = true;
+  document.getElementById("sine").style.display = "";
+  document.getElementById("triangle").style.display = "";
+  document.getElementById("square").style.display = "";
+  document.getElementById("sawtooth").style.display = "";
+  document.getElementById("pepe").style.display = "none";
+  document.getElementById("back").style.display = "none";
+}
 

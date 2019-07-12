@@ -1,5 +1,4 @@
 #aka {
-
    height:100%;
    width: 100%;
    margin: 0;
@@ -10,7 +9,6 @@
 }
 
 .slider {
-   
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
    -webkit-appearance: none;  /* Override default CSS styles */
    width: 90%; /* Full-width */
@@ -31,7 +29,8 @@
    width: 32px; /* Set a specific slider handle width */
    height: 32px; /* Slider handle height */
    background: black; /* Green background */
- }
+}
+
 .button {
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
    padding: 15px 32px;
@@ -40,7 +39,7 @@
    background-color: white;
    border: 2px solid #e7e7e7; /* Green */
 }
-.button:hover {
-   
-   padding: 15px 42px;
+
+.button:hover {   
+   padding: 15px 35px;
 }
