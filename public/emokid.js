@@ -2,6 +2,7 @@ var context ;
 var o;
 var  gain;
 var waveType;
+console.log("lol")
 function fuu() {
   setTimeout(function() {
     fuu();
