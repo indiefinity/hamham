@@ -3,6 +3,7 @@ var o;
 var  gain;
 var waveType;
 var onMenu = false;
+
 console.log("lol")
 function fuu() {
   if (!onMenu) {
@@ -17,9 +18,10 @@ function fuu() {
     gain.connect(context.destination);
     o.frequency.value = document.getElementById("pepe").value;
     o.start(0);
-    
-    console.log(o.type)
-    gain.gain.linearRampToValueAtTime(0, 0.5)
+    console.log("Sound " + o.type)
+    setTimeout(function() {
+      gain.gain.linearRampToValueAtTime(0, 0.255)
+    }, 250);
   }
 }
 function start() {
