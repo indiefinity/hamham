@@ -3,9 +3,6 @@ var o;
 var  gain;
 var waveType;
 var onMenu = false;
-context = new AudioContext();
-o = context.createOscillator();
-gain= context.createGain();
 console.log("lol")
 function fuu() {
   if (!onMenu) {
@@ -22,7 +19,7 @@ function fuu() {
     o.start(0);
     
     console.log(o.type)
-    gain.gain.linearRampToValueAtTime(0, 0.25);
+    gain.gain.linearRampToValueAtTime(0, 0.5)
   }
 }
 function start() {
@@ -59,7 +56,7 @@ function back() {
     document.getElementById("sawtooth").style.display = "";
     document.getElementById("pepe").style.display = "none";
     document.getElementById("back").style.display = "none";
-  }, 500)
+  }, )
   onMenu = true;
 }
 
