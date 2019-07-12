@@ -13,7 +13,7 @@
    
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
    -webkit-appearance: none;  /* Override default CSS styles */
-   width: 100%; /* Full-width */
+   width: 90%; /* Full-width */
    height: 25px; /* Specified height */
    background: #d3d3d3; /* Grey background */
    outline: none; /* Remove outline */
@@ -39,4 +39,8 @@
    font-size: 20px;
    background-color: white;
    border: 2px solid #e7e7e7; /* Green */
+}
+.button:hover {
+   
+   padding: 15px 42px;
 }
