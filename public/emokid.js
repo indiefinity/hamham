@@ -1,30 +1,19 @@
-var deggo = 500;
-var context = new AudioContext()
-var o = context.createOscillator()
-o.connect(context.destination)
 function fuu() {
+  var context = new AudioContext()
+  var o = context.createOscillator()
+  var  gain= context.createGain()
+  o.connect(gain)
+  gain.connect(context.destination)
+  o.type = "triangle"
   o.frequency.value = document.getElementById("pepe").value;
+  o.start(0)
+  gain.gain.linearRampToValueAtTime(0, 0.75)
   setTimeout(function() {
     fuu();
-  },  10)
+  }, 1000)
 }
-function startWave() {
-  o.start()
+function start() {
+  document.getElementById("nappula").style.display = "none";
+  document.getElementById("pepe").style.display = "";
   fuu();
-}
-function startSine() {
-  o.type = "sine"
-  startWave()
-}
-function startSaw() {
-  o.type = "sawtooth"
-  startWave()
-}
-function startSqu() {
-  o.type = "square"
-  startWave()
-}
-function startTri() {
-  o.type = "triangle"
-  startWave()
 }
