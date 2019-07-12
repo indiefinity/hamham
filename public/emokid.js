@@ -1,66 +1,35 @@
-var context ;
-var o;
-var  gain;
-var waveType;
-var onMenu = false;
+var context = new AudioContext(),
+    oscillator,
+    waveType;
 
+function playOscillator(time, freq) {
+    oscillator = context.createOscillator();
+    oscillator.connect(context.destination);
+    oscillator.frequency.value = freq;
+    oscillator.type = waveType;
+    oscillator.start(context.currentTime);
+    oscillator.stop(context.currentTime + time / 1000);
+}
 function fuu() {
-  if (!onMenu) {
-    setTimeout(function() {
-      fuu();
-    }, 500)
-    setTimeout(function() {
-      gain.gain.linearRampToValueAtTime(0, 0.255)
-    }, 250);
-    context = new AudioContext();
-    o = context.createOscillator();
-    gain= context.createGain();
-    o.type = waveType;
-    o.connect(gain);
-    gain.connect(context.destination);
-    o.frequency.value = document.getElementById("pepe").value;
-    o.start(0);
-    console.log("Sound " + o.type)
-  }
-}
-
-function start() {
-  document.getElementById("sine").style.display = "none";
-  document.getElementById("triangle").style.display = "none";
-  document.getElementById("square").style.display = "none";
-  document.getElementById("sawtooth").style.display = "none";
+  document.getElementById("napi").style.display = "none";
   document.getElementById("pepe").style.display = "";
-  document.getElementById("back").style.display = "";
-  onMenu = false;
-  fuu();
+  document.getElementById("sine").style.display = "";
+  document.getElementById("triangle").style.display = "";
+  document.getElementById("square").style.display = "";
+  document.getElementById("sawtooth").style.display = "";
+  setInterval(function() {
+    playOscillator(250, document.getElementById("pepe").value);
+  },500);
 }
-
-function sine()  {
+function sine() {
   waveType = "sine";
-  start();
 }
-function triangle()  {
+function triangle() {
   waveType = "triangle";
-  start();
 }
-function square()  {
+function square() {
   waveType = "square";
-  start();
 }
-function sawtooth()  {
+function sawtooth() {
   waveType = "sawtooth";
-  start();
 }
-
-function back() {
-  setTimeout(function() {
-    document.getElementById("sine").style.display = "";
-    document.getElementById("triangle").style.display = "";
-    document.getElementById("square").style.display = "";
-    document.getElementById("sawtooth").style.display = "";
-    document.getElementById("pepe").style.display = "none";
-    document.getElementById("back").style.display = "none";
-  }, 500)
-  onMenu = true;
-}
-
