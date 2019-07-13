@@ -1,4 +1,5 @@
 #aka {
+   font-family: Ubuntu;
    height:100%;
    width: 100%;
    margin: 0;
@@ -9,7 +10,7 @@
 }
 
 .slider {
-   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
    -webkit-appearance: none;  /* Override default CSS styles */
    width: 90%; /* Full-width */
    height: 25px; /* Specified height */
@@ -26,8 +27,8 @@
 
 .slider::-webkit-slider-thumb {
    -webkit-appearance: none; /* Override default look */
-   width: 32px; /* Set a specific slider handle width */
-   height: 32px; /* Slider handle height */
+   width: 25px; /* Set a specific slider handle width */
+   height: 25px; /* Slider handle height */
    background: black; /* Green background */
 }
 
