@@ -1,4 +1,4 @@
-function beeperiinKunHaluatMennäKlikkaaTätäVitunNappia() {
+function beeper() {
     window.open("./beeper");
 }
 var red = 255;
