@@ -1,19 +1,22 @@
-var context = new AudioContext(),
-    oscillator,
-    waveType;
-
-function play(time, freq, type) {
-    oscillator = context.createOscillator();
-    oscillator.connect(context.destination);
-    oscillator.frequency.value = freq;
-    oscillator.type = type;
-    oscillator.start(context.currentTime);
-    oscillator.stop(context.currentTime + time / 1000);
+var red = 255;
+var blue = 0;
+var green = 0;
+function lol() {
+    if (red > 0 && blue == 0) {
+        red--;
+        green++;
+    }
+    else if (green > 0) {
+        green--;
+        blue++;
+    }
+    else if (blue > 0) {
+        blue--;
+        red++;
+    }
+    document.body.style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue +")";
+    setTimeout(function(){
+        lol();
+    }, 10);
 }
-function fuu() {
-    document.getElementById("napi").style.display = "none";
-    setTimeout(function() {
-        fuu();
-    }, document.getElementById("beepFreqBlank").value);
-    play(document.getElementById("beepFreq").value, document.getElementById("freq").value, "square");
-}
+lol();
