@@ -33,6 +33,7 @@
 }
 
 .button {
+   transform: rotate(1deg);
    outline: none; 
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
    padding: 15px 32px;
@@ -45,13 +46,13 @@
 .button:hover {   
    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.3);
    padding: 18px 35px;
-   animation: wiggle 1.5s linear infinite;}
+   animation: wiggle 2s linear infinite;}
 
  
- /* Keyframes */
+
  @keyframes wiggle {
-   0%, 7% {
-     transform: rotateZ(0);
+   0% {
+     transform: rotateZ(1deg);
    }
    15% {
      transform: rotateZ(-15deg);
@@ -63,13 +64,13 @@
      transform: rotateZ(-10deg);
    }
    30% {
-     transform: rotateZ(6deg);
+     transform: rotateZ(5deg);
    }
    35% {
-     transform: rotateZ(-4deg);
+     transform: rotateZ(-5deg);
    }
    40%, 100% {
-     transform: rotateZ(0);
+     transform: rotateZ(1deg);
    }
  }
  
