@@ -1,3 +1,6 @@
+function beeperiinKunHaluatMennäKlikkaaTätäVitunNappia() {
+    window.open("https://hamham.tk//beeper");
+}
 var red = 255;
 var blue = 0;
 var green = 0;
