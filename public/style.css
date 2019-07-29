@@ -43,7 +43,6 @@
 }
 .button:hover {
   box-shadow: 0 16px 32px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.3);
-  padding: 18px 35px;
 }
 .wiggle:hover {   
   animation: wiggle 2s linear infinite;
