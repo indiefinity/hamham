@@ -1,75 +1,75 @@
 #aka {
-   font-family: Ubuntu;
-   height:100%;
-   width: 100%;
-   margin: 0;
-   padding: 0;
-   overflow: hidden;
-   vertical-align: middle;
-   text-align: center;
+  font-family: Ubuntu;
+  height:100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .slider { 
-   -webkit-appearance: none; 
-   width: 90%;
-   height: 25px;
-   background: #d3d3d3;
-   outline: none;
-   opacity: 0.75;
-   -webkit-transition: .5s;
-   transition: opacity .5s;
- }
+  -webkit-appearance: none; 
+  width: 90%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+ opacity: 0.75;
+  -webkit-transition: .5s;
+  transition: opacity .5s;
+}
 
- .slider:hover {
-   opacity: 1;
+.slider:hover {
+  opacity: 1;
 }
 
 .slider::-webkit-slider-thumb {
-   -webkit-appearance: none;
-   width: 25px;
-   height: 25px;
-   background: black;
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  background: black;
 }
 
 .button {
-   transform: rotate(1deg);
-   outline: none; 
-   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-   padding: 15px 32px;
-   font-family: Ubuntu;
-   font-size: 20px;
-   background-color: white;
-   border: 2px solid black;
+  transform: rotate(1deg);
+  outline: none; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding: 15px 32px;
+  font-family: Ubuntu;
+  font-size: 20px;
+  background-color: white;
+  border: 2px solid black;
 }
-
-.button:hover {   
-   box-shadow: 0 16px 32px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.3);
-   padding: 18px 35px;
-   animation: wiggle 2s linear infinite;}
-
+.button {
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.3);
+  padding: 18px 35px;
+}
+.wiggle:hover {   
+  animation: wiggle 2s linear infinite;
+}
  
 
- @keyframes wiggle {
-   0% {
-     transform: rotateZ(1deg);
-   }
-   15% {
-     transform: rotateZ(-15deg);
-   }
-   20% {
-     transform: rotateZ(10deg);
-   }
-   25% {
-     transform: rotateZ(-10deg);
-   }
-   30% {
-     transform: rotateZ(5deg);
-   }
-   35% {
-     transform: rotateZ(-5deg);
-   }
-   40%, 100% {
-     transform: rotateZ(1deg);
-   }
- }
- 
+@keyframes wiggle {
+  0% {
+    transform: rotateZ(1deg);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(5deg);
+  }
+  35% {
+    transform: rotateZ(-5deg);
+  }
+  40%, 100% {
+    transform: rotateZ(1deg);
+  }
+}
