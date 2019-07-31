@@ -1,5 +1,7 @@
-function beeper() {
-    window.open("./beeper");
+var ut = new SpeechSynthesisUtterance("Why do you do this to me end my sufferin i cant feel my legs")
+ut.voice = window.speechSynthesis.getVoices()[0]
+function fuu() {
+    window.speechSynthesis.speak(ut)
 }
 var red = 255;
 var blue = 0;
