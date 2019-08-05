@@ -1,8 +1,9 @@
-var ut;
-function fuu() {
-    ut = new SpeechSynthesisUtterance("7777777777777777777777777777777 fuck haha gotcha")
-    window.speechSynthesis.cancel(ut)
-    window.speechSynthesis.speak(ut)
+var ut = new SpeechSynthesisUtterance();
+function speak(what, speed) {
+    ut.rate = speed;
+    ut.text = what;
+    window.speechSynthesis.cancel(ut);
+    window.speechSynthesis.speak(ut);
 }
 
 var red = 255;

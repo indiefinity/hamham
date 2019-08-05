@@ -56,7 +56,7 @@ body {
 
 @keyframes wiggle {
   0% {
-    transform: rotateZ(1deg);
+    transform: rotateZ(0deg);
   }
   15% {
     transform: rotateZ(-15deg);
@@ -74,6 +74,6 @@ body {
     transform: rotateZ(-5deg);
   }
   40%, 100% {
-    transform: rotateZ(1deg);
+    transform: rotateZ(0deg);
   }
 }
