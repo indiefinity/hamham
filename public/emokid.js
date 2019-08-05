@@ -6,6 +6,7 @@ function joke() {
             xhr.setRequestHeader("Accept", "application/json");
         }, success: function(data) {
             console.log(data);
+            document.getElementById("papa").innerHTML = data.joke;
             ut.text = data.joke + " hahahahahahaha";
             if (Math.floor(Math.random() * 4) == 0) {
                 ut.text = ut.text + " why aren't you laughing.";

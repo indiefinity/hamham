@@ -1,6 +1,12 @@
 #pepe {
   height: 10%; 
 }
+.outlined {
+  color: #fff;
+  text-shadow: #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,
+             #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;
+  -webkit-font-smoothing: antialiased;
+}
 body {
   margin: 0;
   overflow: hidden;
