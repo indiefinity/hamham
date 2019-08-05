@@ -2,6 +2,7 @@
 
 
 var ut = new SpeechSynthesisUtterance();
+ut.lang = "fi"
 function joke() {
     $.ajax({
         url: 'https://icanhazdadjoke.com/',
@@ -9,7 +10,7 @@ function joke() {
             xhr.setRequestHeader("Accept", "application/json");
         }, success: function(data){
             console.log(data);
-            ut.text = data.joke;
+            ut.text = data.joke + " hahahahahahaha why aren't you laughing";
             window.speechSynthesis.cancel(ut);
             window.speechSynthesis.speak(ut);
         }
