@@ -1,15 +1,32 @@
 var ut = new SpeechSynthesisUtterance();
 function joke() {
-    ut.text = `
-    On May 28, 2016, a three-year-old boy climbed into a gorilla enclosure at the Cincinnati Zoo and Botanical Garden and was grabbed and dragged by Harambe, a 17-year-old Western lowland gorilla. Fearing for the boy's life, a zoo worker shot and killed Harambe. The incident was recorded on video and received broad international coverage and commentary, including controversy over the choice to kill Harambe. A number of primatologists and conservationists wrote later that the zoo had no other choice under the circumstances, and that it highlighted the danger of zoo animals in close proximity to humans and the need for better standards of care.
-    `;
+    ut.text = `Empty spaces, what are we living for?
+    Abandoned places, I guess we know the score
+    On and on, does anybody know what we are looking for?
+    Another hero, another mindless crime
+    Behind the curtain, in the pantomime
+    Hold the line, does anybody want to take it anymore?
+    The show must go on
+    The show must go on
+    Yeah
+    Inside my heart is breaking
+    My make-up may be flaking
+    But my smile still stays on
+    Whatever happens, I'll leave it all to chance
+    Another heartache, another failed romance
+    On and on, does anybody know what we are living for?
+    I guess I'm learning (I'm learning), I must be warmer now
+    I'll soon be turning (turning, turning, turning), 'round the corner now
+    Outside the dawn is breaking
+    But inside in the dark I'm aching to be free`;
     window.speechSynthesis.cancel(ut);
     window.speechSynthesis.speak(ut);
 }
 
 var red = 255;
-var blue = 0;
 var green = 0;
+var blue = 0;
+
 function lol() {
     if (red > 0 && blue == 0) {
         red--;
@@ -23,7 +40,7 @@ function lol() {
         blue--;
         red++;
     }
-    document.body.style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue +")";
+    document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
     setTimeout(function(){
         lol();
     }, 10);
