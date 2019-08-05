@@ -1,8 +1,10 @@
-var ut = new SpeechSynthesisUtterance("Why do you do this to me end my sufferin i cant feel my legs")
-ut.voice = window.speechSynthesis.getVoices()[0]
+var ut;
 function fuu() {
+    ut = new SpeechSynthesisUtterance("7777777777777777777777777777777 fuck haha gotcha")
+    window.speechSynthesis.cancel(ut)
     window.speechSynthesis.speak(ut)
 }
+
 var red = 255;
 var blue = 0;
 var green = 0;
