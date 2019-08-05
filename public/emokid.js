@@ -10,12 +10,10 @@ function joke() {
         }, success: function(data){
             console.log(data);
             ut.text = data.joke;
+            window.speechSynthesis.cancel(ut);
+            window.speechSynthesis.speak(ut);
         }
     });
-    setTimeout(function(){
-        window.speechSynthesis.cancel(ut);
-        window.speechSynthesis.speak(ut);
-    },250);
 };
 
 
