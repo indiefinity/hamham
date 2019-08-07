@@ -1,5 +1,4 @@
-var carX = 200; 
-var carY = 100;
+var blockY = 50;
 var dir = 0;
 
 
@@ -11,39 +10,37 @@ var tonks = setInterval(function() {
 
     c.width = c.width;
     ctx.fillStyle = "#000000";
-    ctx.fillRect(carX, carY, 10, 10);
+    ctx.fillRect(100, c.height - blockY, 50, 50);
 }, 10);
-
-window.addEventListener( "keypress", doKeyDown, false )
+function jump() {
+    if (blockY < 500) {
+        var velli = 10;
+        var up = setInterval(function() {
+            blockY += velli;
+            velli *= 0.95;
+            if (velli < 0.1) {
+                console.log(velli)
+                clearInterval(up);
+                var down = setInterval(function() {
+                    blockY -= velli;
+                    velli *= 1.05;
+                    if (blockY < 50) {
+                        console.log(velli);
+                        clearInterval(down);
+                        blockY = 50;
+                    };
+                }, 10);
+            };
+        }, 10);
+    };
+};
+window.addEventListener( "keypress", doKeyDown, false);
 c.addEventListener( "keydown", doKeyDown, true);
 function doKeyDown(e) {
-    console.log(e.keyCode)
+    console.log(e.keyCode);
     switch(e.keyCode) {
-        case 100:
-            if (dir == 3) {dir = 0;}
-            else {dir++;}
+        case 32:
+            jump();
             break;
-        case 97:
-            if (dir == 0) {dir = 3;}
-            else {dir--;}
-            break;
-        case 119:
-            switch (dir) {
-                case 0:
-                    carY -= 10;
-                    break;
-                case 1:
-                    carX += 10;
-                    break;
-                case 2:
-                    carY += 10;
-                    break;
-                case 3:
-                    carX -= 10;
-                    break;
-            }
-            break;
-    }
-}
-
-
+    };
+};
