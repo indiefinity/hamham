@@ -4,27 +4,34 @@ var dir = 0;
 var c = document.getElementById("peli");
 var ctx = c.getContext("2d");
 
-
-var tonks = setInterval(function() {
+function fuu() {
+    console.log("spike coming right up")
+    var spikeX = 800;
+    var decearingSpike = setInterval(function() {
+        ctx.fillStyle = "#ff0000";
+        ctx.fillRect(spikeX, 550, 50, 50);
+        spikeX -= 10;
+    }, 10);
+}
+var stonks = setInterval(function() {  
+    c.width = c.width;
     ctx.fillStyle = "#000000";
     ctx.fillRect(100, c.height - blockY, 50, 50);
-    setTimeout(function() {
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(100, c.height - blockY, 50, 50);
-    }, 9)
+    if (Math.floor(Math.random() * 100) == 0) {fuu()}
 }, 10);
 function jump() {
-    if (blockY < 500) {
+    if (blockY = 50) {
         var velli = 10;
         var up = setInterval(function() {
             blockY += velli;
             velli *= 0.95;
-            if (velli < 0.1) {
+            if (velli < 0.4) {
                 console.log(velli)
                 clearInterval(up);
                 var down = setInterval(function() {
                     blockY -= velli;
                     velli *= 1.05;
+                    if (velli > 2) {velli = 2;}
                     if (blockY < 50) {
                         console.log(velli);
                         clearInterval(down);
@@ -45,18 +52,3 @@ function doKeyDown(e) {
             break;
     };
 };
-function spike() {
-    var spikeX = c.width;
-    var decearingSpike = setInterval(function() {
-        
-        ctx.fillStyle = "#ff0000";
-        ctx.fillRect(spikeX, 100, 50, 50);
-        spikeX -= 10
-    },10)
-    setTimeout(function() {
-        spike();
-    }, Math.ceil(Math.random() * 1800) - 200);
-}
-setTimeout(function() {
-    spike();
-}, Math.ceil(Math.random() * 1800) - 200);
