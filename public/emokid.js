@@ -1,16 +1,17 @@
 var blockY = 50;
 var dir = 0;
 
-
 var c = document.getElementById("peli");
 var ctx = c.getContext("2d");
 
 
 var tonks = setInterval(function() {
-
-    c.width = c.width;
     ctx.fillStyle = "#000000";
     ctx.fillRect(100, c.height - blockY, 50, 50);
+    setTimeout(function() {
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(100, c.height - blockY, 50, 50);
+    }, 9)
 }, 10);
 function jump() {
     if (blockY < 500) {
@@ -44,3 +45,18 @@ function doKeyDown(e) {
             break;
     };
 };
+function spike() {
+    var spikeX = c.width;
+    var decearingSpike = setInterval(function() {
+        
+        ctx.fillStyle = "#ff0000";
+        ctx.fillRect(spikeX, 100, 50, 50);
+        spikeX -= 10
+    },10)
+    setTimeout(function() {
+        spike();
+    }, Math.ceil(Math.random() * 1800) - 200);
+}
+setTimeout(function() {
+    spike();
+}, Math.ceil(Math.random() * 1800) - 200);
