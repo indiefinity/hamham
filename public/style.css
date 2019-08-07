@@ -1,18 +1,14 @@
-#pepe {
-  height: 10%; 
-}
 .outlined {
   color: #fff;
-  text-shadow: #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,
-             #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;
+  text-shadow: #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,    #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;
   -webkit-font-smoothing: antialiased;
 }
 body {
   margin: 0;
   overflow: hidden;
+  font-family: Ubuntu;
 }
 #aka {
-  font-family: Ubuntu;
   height:100%;
   width: 100%;
   padding: 0;
