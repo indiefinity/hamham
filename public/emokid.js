@@ -1,17 +1,3 @@
-var context = new AudioContext(),
-    oscillator,
-    waveType;
-
-function play(time, freq, type) {
-    oscillator = context.createOscillator();
-    oscillator.connect(context.destination);
-    oscillator.frequency.value = freq;
-    oscillator.type = type;
-    oscillator.start(context.currentTime);
-    oscillator.stop(context.currentTime + time / 1000);
-}
-
-
 var blockY = 50;
 
 var c = document.getElementById("peli");
@@ -23,7 +9,6 @@ img.src = "iik.png"
 var velli;
 function jump() {
     if (blockY == 50) {
-        play(500, 500, "sine")
         velli = 10;
         var timo = setInterval(function() {
 
@@ -44,5 +29,15 @@ function jump() {
 }
 
 setInterval(function() {
-    if (Math.floor(Math.random() * 2500) == 0) { jump(); console.log("mamaaa")}
-}, 1)
+    if (Math.floor(Math.random() * 30) == 0) {
+        jump(); 
+        console.log("mamaaa")
+        if (Math.floor(Math.random() * 5) == 0) {
+            img.src = "aak.png";
+            console.log("omg its angri")
+        } else {
+            img.src = "iik.png"
+            
+        }
+    }
+}, 100)
