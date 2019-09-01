@@ -2,7 +2,7 @@
 
 <title>Kakkapoumiukumauku</title>
 
-</head><body style="background-color: tomato; color: white;">
+</head><body>
 
 <input id="pepe">
 <button onclick="lol()">butt</button>
@@ -11,16 +11,25 @@
 
 <script>
 
+var ääni = new Audio("ääni.mp3")
+
+var deggo = 0
+setInterval(function() {
+  deggo++
+  document.getElementById("kuva").style.transform = `rotate(${deggo}deg)`
+}, 5)
+
 setInterval(function() {
   document.body.style.backgroundColor = "black"
   document.body.style.color = "white"
   setTimeout(function() {
     document.body.style.backgroundColor = "white"
     document.body.style.color = "black"
-  }, 50)
-}, 100)
+  }, 500)
+}, 1000)
 
 function lol() {
+  ääni.play()
   if (document.getElementById("pepe").value == "kakka") {
     alert("kakkahätääää!")
   }
