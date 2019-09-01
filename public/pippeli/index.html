@@ -1,14 +1,28 @@
 ﻿<html><head>
-<link rel="stylesheet" type="text/css" href="https://hamham.tk/style.css">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-<title>why are you here</title>
-</head><body>
-<table id="aka">
-  <td>
-    <h1>Tatu was here</h1>
-  </td>
-</table>
 
+<title>Kakkapoumiukumauku</title>
 
-<script src="emokid.js"></script>
-</body></html>
+</head><body style="background-color: tomato; color: white;">
+
+<input id="pepe">
+<button onclick="lol()">butt</button>
+<h1>Haista paska!</h1>
+
+<script>
+
+setInterval(function() {
+  document.body.style.backgroundColor = "black"
+  document.body.style.color = "white"
+  setTimeout(function() {
+    document.body.style.backgroundColor = "white"
+    document.body.style.color = "black"
+  }, 50)
+}, 100)
+
+function lol() {
+  if (document.getElementById("pepe").value == "kakka") {
+    alert("kakkahätääää!")
+  }
+}
+
+</script></body></html>
