@@ -9,7 +9,7 @@ var horizontalCenter = c.width / 2;
 var char = {};
 char.width = 50;
 char.height = 50;
-char.x = c.width / 2 + c.width / 4 - char.width / 2;
+char.x = horizontalCenter + c.width / 4 - char.width / 2;
 char.y = verticalCenter - c.height / 4 - char.height / 2;
 var up = true;
 console.log(char);
@@ -28,16 +28,30 @@ var SU = setInterval(function() {
     ctx.fillRect(spike.x, spike.y, spike.width, spike.height);
 }, 10);
 
+var velli = 0.025;
 function switchSides() {
-    if (up) {
-        up = false;
-        char.y = verticalCenter + c.height / 4 - char.height / 2;
-    } else {
-        up = true;
-        char.y = verticalCenter - c.height / 4 - char.height / 2;
+    if(char.y == verticalCenter - c.height / 4 - char.height / 2 || char.y == verticalCenter + c.height / 4 - char.height / 2) {
+        if (up) {
+            up = false;
+            var switchInterval = setInterval(function() {
+                char.y += velli * c.height; 
+                if (char.y > verticalCenter + c.height / 4 - char.height / 2) {
+                    clearInterval(switchInterval);
+                    char.y = verticalCenter + c.height / 4 - char.height / 2;
+                }
+            }, 10)
+        } else {
+            up = true;
+            var switchInterval = setInterval(function() {
+                char.y -= velli * c.height; 
+                if (char.y < verticalCenter - c.height / 4 - char.height / 2) {
+                    clearInterval(switchInterval);
+                    char.y = verticalCenter - c.height / 4 - char.height / 2;
+                }
+            }, 10)
+        };
     };
 };
-
 window.addEventListener("keydown", function(e) {
     console.log(e.keyCode);
     switch(e.keyCode) {
@@ -59,13 +73,13 @@ function loser() {
     ctx.fillText("You suck!", horizontalCenter, verticalCenter); 
 }
 
-var spikeMove = c.width / 50
+var spikeMove = c.width / 75
 var spikeUp;
 var spikeBool = false;
 
 var spikeInterval = setInterval(function() {
     console.log("spike interval")
-    if (Math.floor(Math.random() * 3) == 0) {
+    if (Math.floor(Math.random() * 2) == 0) {
         if (!spikeBool) {
             console.log("spike send")
             spikeBool = true;
@@ -85,10 +99,11 @@ var spikeInterval = setInterval(function() {
                         loser();
                     }
                     spike.x = 0;
+                    spike.y = verticalCenter - spike.height / 2;
                     clearInterval(spikeComing);
                     spikeBool = false;
                 }
             }, 10)
         };
     };
-}, 750);
+}, 1000);
