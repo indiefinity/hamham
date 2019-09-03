@@ -22,29 +22,30 @@ spike.y = verticalCenter - spike.height / 2;
 
 var SU = setInterval(function() {
     c.width = c.width;
-    ctx.fillStyle = "#000000";
-    ctx.fillRect(char.x, char.y, char.width, char.height);
-    ctx.fillStyle = "#ff0000";
-    ctx.fillRect(spike.x, spike.y, spike.width, spike.height);
+    ctx.drawImage(document.getElementById('iik'), char.x, char.y, char.width, char.height);
+    ctx.drawImage(document.getElementById('aak'), spike.x, spike.y, spike.width, spike.height);
 }, 10);
 
-var velli = 0.025;
+var velli = 0.050;
 function switchSides() {
     if(char.y == verticalCenter - c.height / 4 - char.height / 2 || char.y == verticalCenter + c.height / 4 - char.height / 2) {
+        
         if (up) {
-            up = false;
+            up = "kek";
             var switchInterval = setInterval(function() {
                 char.y += velli * c.height; 
                 if (char.y > verticalCenter + c.height / 4 - char.height / 2) {
+                    up = false;
                     clearInterval(switchInterval);
                     char.y = verticalCenter + c.height / 4 - char.height / 2;
                 }
             }, 10)
         } else {
-            up = true;
+            up = "kek";
             var switchInterval = setInterval(function() {
                 char.y -= velli * c.height; 
                 if (char.y < verticalCenter - c.height / 4 - char.height / 2) {
+                    up = true;
                     clearInterval(switchInterval);
                     char.y = verticalCenter - c.height / 4 - char.height / 2;
                 }
@@ -69,8 +70,8 @@ function loser() {
     clearInterval(SU);
     ctx.font = "50px Ubuntu";
     ctx.textAlign = "center";
-    ctx.fillStyle = "#000000";
-    ctx.fillText("You suck!", horizontalCenter, verticalCenter); 
+    ctx.fillStyle = "#ff0000";
+    ctx.fillText("You suck! (reload site to retry)", horizontalCenter, verticalCenter); 
 }
 
 var spikeMove = c.width / 75
@@ -84,17 +85,17 @@ var spikeInterval = setInterval(function() {
             console.log("spike send")
             spikeBool = true;
             if (Math.floor(Math.random() * 2) == 0) {
-                spike.y = verticalCenter - c.height / 4 - char.height / 2;
+                spike.y = verticalCenter - c.height / 4 - spike.height / 2;
                 spikeUp = true;
             } else {
-                spike.y = verticalCenter + c.height / 4 - char.height / 2;
+                spike.y = verticalCenter + c.height / 4 - spike.height / 2;
                 spikeUp = false;
             }
             var spikeComing = setInterval(function() {
                 spike.x += spikeMove;
                 if (spike.x > char.x) {
                     console.log("spike is at the end");
-                    if (spikeUp == up) {
+                    if ((spikeUp && char.y == verticalCenter - c.height / 4 - char.height / 2) || (!spikeUp && char.y == verticalCenter + c.height / 4 - char.height / 2)) {
                         console.log("fuufuu hävisit");
                         loser();
                     }
