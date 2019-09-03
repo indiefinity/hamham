@@ -67,10 +67,11 @@ function loser() {
     heIsALoser = true;
     titanic.play();
     clearInterval(SU);
-    ctx.font = "50px Ubuntu";
+    clearInterval(spikeInterval);
+    ctx.font = `${c.width / 20}px Ubuntu`;
     ctx.textAlign = "center";
-    ctx.fillStyle = "#ff0000";
-    ctx.fillText("You suck!", horizontalCenter, verticalCenter); 
+    ctx.fillStyle = "#000000";
+    ctx.fillText("This is so sad!", horizontalCenter, verticalCenter); 
 }
 
 var spikeMove = c.width / 75
@@ -92,16 +93,19 @@ var spikeInterval = setInterval(function() {
             }
             var spikeComing = setInterval(function() {
                 spike.x += spikeMove;
-                if (spike.x > char.x) {
+                if (spike.x > char.x - spike.width) {
                     console.log("spike is at the end");
-                    if ((spikeUp && char.y == verticalCenter - c.height / 4 - char.height / 2) || (!spikeUp && char.y == verticalCenter + c.height / 4 - char.height / 2)) {
+                    if ((spikeUp && char.y < verticalCenter - c.height / 4 + char.height / 2) || (!spikeUp && char.y > verticalCenter + c.height / 4 - char.height * 1.5)) {
                         console.log("fuufuu hävisit");
                         loser();
                     }
-                    spike.x = 0;
-                    spike.y = verticalCenter - spike.height / 2;
-                    clearInterval(spikeComing);
-                    spikeBool = false;
+                    if (spike.x - char.width > char.x) {
+                        spike.x = 0;
+                        spike.y = verticalCenter - spike.height / 2;
+                        clearInterval(spikeComing);
+                        spikeBool = false;
+                    }
+                    
                 }
             }, 10)
         };
