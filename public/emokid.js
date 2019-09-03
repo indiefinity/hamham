@@ -24,9 +24,9 @@ var SU = setInterval(function() {
     c.width = c.width;
     ctx.drawImage(document.getElementById('iik'), char.x, char.y, char.width, char.height);
     ctx.drawImage(document.getElementById('aak'), spike.x, spike.y, spike.width, spike.height);
-}, 10);
+}, 5);
 
-var velli = 0.050;
+var velli = 0.025;
 function switchSides() {
     if(char.y == verticalCenter - c.height / 4 - char.height / 2 || char.y == verticalCenter + c.height / 4 - char.height / 2) {
         
@@ -39,7 +39,7 @@ function switchSides() {
                     clearInterval(switchInterval);
                     char.y = verticalCenter + c.height / 4 - char.height / 2;
                 }
-            }, 10)
+            }, 5)
         } else {
             up = "kek";
             var switchInterval = setInterval(function() {
@@ -49,7 +49,7 @@ function switchSides() {
                     clearInterval(switchInterval);
                     char.y = verticalCenter - c.height / 4 - char.height / 2;
                 }
-            }, 10)
+            }, 5)
         };
     };
 };
@@ -74,13 +74,13 @@ function loser() {
     ctx.fillText("This is so sad!", horizontalCenter, verticalCenter); 
 }
 
-var spikeMove = c.width / 75
+var spikeMove = c.width / 125
 var spikeUp;
 var spikeBool = false;
 
 var spikeInterval = setInterval(function() {
     console.log("spike interval")
-    if (Math.floor(Math.random() * 2) == 0) {
+    if (Math.floor(Math.random() * 3) == 0) {
         if (!spikeBool) {
             console.log("spike send")
             spikeBool = true;
@@ -107,8 +107,8 @@ var spikeInterval = setInterval(function() {
                     }
                     
                 }
-            }, 10)
+            }, 5)
         };
     };
-}, 1000);
+}, 500);
 
