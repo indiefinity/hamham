@@ -61,13 +61,10 @@ window.addEventListener("keydown", function(e) {
             break;
     };
 });
-window.addEventListener("click", function() {
+window.addEventListener("mousedown", function() {
     switchSides();
 });
-window.addEventListener("resize", function(){
-    c.width = window.innerWidth - 10;
-    c.height = window.innerHeight - 10;
-});
+
 
 var titanic = new Audio("titanic.m4a");
 function loser() {
