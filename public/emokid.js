@@ -53,27 +53,24 @@ function switchSides() {
         };
     };
 };
-window.addEventListener("keydown", function(e) {
-    console.log(e.keyCode);
-    switch(e.keyCode) {
-        case 32:
-            switchSides();
-            break;
-    };
-});
+
 window.addEventListener("mousedown", function() {
     switchSides();
+    if(heIsALoser) {
+        this.location.reload();
+    }
 });
 
-
+var heIsALoser = false;
 var titanic = new Audio("titanic.m4a");
 function loser() {
+    heIsALoser = true;
     titanic.play();
     clearInterval(SU);
     ctx.font = "50px Ubuntu";
     ctx.textAlign = "center";
     ctx.fillStyle = "#ff0000";
-    ctx.fillText("You suck! (reload site to retry)", horizontalCenter, verticalCenter); 
+    ctx.fillText("You suck!", horizontalCenter, verticalCenter); 
 }
 
 var spikeMove = c.width / 75
