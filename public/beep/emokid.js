@@ -26,4 +26,25 @@ function beep() {
     }, 100000 / document.getElementById("beepFreq").value);
     if (beepOn) {play(document.getElementById("beepLength").value, document.getElementById("freq").value, "sine");}
 };
+
+
+var red = 255;
+var green = 0;
+var blue = 0;
 beep();
+var fade = setInterval(function(){
+    if (red > 0 && blue == 0) {
+        red--;
+        green++;
+    }
+    else if (green > 0) {
+        green--;
+        blue++;
+    }
+    else if (blue > 0) {
+        blue--;
+        red++;
+    };
+
+    document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+},10);

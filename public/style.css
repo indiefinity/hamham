@@ -20,8 +20,8 @@ body {
   -webkit-appearance: none; 
   width: 90%;
   height: 32px;
-  background: #d3d3d3;
   outline: none;
+  background: rgba(255, 255, 255, 0.1);
  opacity: 0.75;
   -webkit-transition: .5s;
   transition: opacity .5s;
@@ -35,7 +35,7 @@ body {
   -webkit-appearance: none;
   width: 32px;
   height: 32px;
-  background: black;
+  background: rgb(0, 0, 0);
 }
 
 .button {
