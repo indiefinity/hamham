@@ -1,14 +1,16 @@
-var context = new AudioContext(),
-    oscillator,
-    waveType;
+var context = new AudioContext();
+var oscillator;
+var node = context.createGain();
 
-function play(time, freq, type) {
+function play() {
     oscillator = context.createOscillator();
-    oscillator.connect(context.destination);
-    oscillator.frequency.value = freq;
-    oscillator.type = type;
+    oscillator.connect(node);
+    node.connect(context.destination);
+    node.gain.value = document.getElementById("volume").value / 100;
+    oscillator.frequency.value = document.getElementById("freq").value;
+    oscillator.type = "sine";
     oscillator.start(context.currentTime);
-    oscillator.stop(context.currentTime + time / 1000);
+    oscillator.stop(context.currentTime + document.getElementById("beepLength").value / 1000);
 };
 var beepOn = false;
 function toggle() {
@@ -24,7 +26,9 @@ function beep() {
     setTimeout(function() {
         beep();
     }, 100000 / document.getElementById("beepFreq").value);
-    if (beepOn) {play(document.getElementById("beepLength").value, document.getElementById("freq").value, "sine");}
+    if (beepOn) {
+        play();
+    }
 };
 
 
