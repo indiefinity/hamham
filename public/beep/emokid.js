@@ -9,11 +9,21 @@ function play(time, freq, type) {
     oscillator.type = type;
     oscillator.start(context.currentTime);
     oscillator.stop(context.currentTime + time / 1000);
-}
-function fuu() {
-    document.getElementById("napi").style.display = "none";
+};
+var beepOn = false;
+function toggle() {
+    if (beepOn) {
+        beepOn = false;
+    }
+    else {
+        beepOn = true;
+    }
+};
+
+function beep() {
     setTimeout(function() {
-        fuu();
-    }, document.getElementById("beepFreqBlank").value);
-    play(document.getElementById("beepFreq").value, document.getElementById("freq").value, "square");
-}
+        beep();
+    }, 100000 / document.getElementById("beepFreq").value);
+    if (beepOn) {play(document.getElementById("beepLength").value, document.getElementById("freq").value, "sine");}
+};
+beep();
