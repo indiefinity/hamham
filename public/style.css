@@ -13,12 +13,11 @@ body {
   width: 100%;
   padding: 0;
   vertical-align: middle;
-  text-align: center;
 }
 
 .slider { 
   -webkit-appearance: none; 
-  width: 90%;
+  width: 75%;
   height: 32px;
   outline: none;
   background: rgba(255, 255, 255, 0.1);
