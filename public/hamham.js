@@ -1,40 +1,33 @@
-var ut = new SpeechSynthesisUtterance();
-function joke() {
-    $.ajax({
-        url: 'https://icanhazdadjoke.com/',
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("Accept", "application/json");
-        }, success: function(data) {
-            console.log(data);
-            document.getElementById("papa").innerHTML = data.joke;
-            ut.text = data.joke + " hahahahahahaha";
-            if (Math.floor(Math.random() * 4) == 0) {
-                ut.text = ut.text + " why aren't you laughing.";
-            };
-            window.speechSynthesis.cancel(ut);
-            window.speechSynthesis.speak(ut);
-        }
-    });
-};
+
+var canvas = document.getElementById("pepe");
+var context = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 
-var red = 255;
-var green = 0;
-var blue = 0;
 
-var fade = setInterval(function(){
-    if (red > 0 && blue == 0) {
-        red--;
-        green++;
-    }
-    else if (green > 0) {
-        green--;
-        blue++;
-    }
-    else if (blue > 0) {
-        blue--;
-        red++;
-    };
+var pepe = {
+    "width":30,
+    "height":30
+}
+pepe.x = canvas.width / 2 - pepe.width / 2;
+pepe.y = canvas.height / 2 - pepe.height / 2;
 
-    document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-},10);
+context.fillStyle = "black";
+
+setInterval(function() {
+    canvas.width = canvas.width
+    context.fillRect(pepe.x, pepe.y, pepe.width, pepe.height);
+    
+    context.stroke();
+}, 5)
+
+var kakka = 0
+
+setInterval(function()  {
+    pepe.y =  (canvas.height / 2 - pepe.height / 2) + (canvas.height / 4) * Math.sin(kakka * 6.3);
+    pepe.x =  (canvas.width / 2 - pepe.width / 2) + (canvas.height / 4)  * Math.cos(kakka * 6.3);
+    console.log(Math.sin(1000 * kakka * 6.3))
+    kakka += 0.001;
+}, 5);
