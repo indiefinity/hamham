@@ -28,6 +28,7 @@ setInterval(function() {
 }, 1000 / 60);
 document.onmousedown = function() {
     aa.play();
+    aa.currentTime = 0;
     char.v = 20.0;
     char.d = Math.random() * Math.PI * 2;
 };
