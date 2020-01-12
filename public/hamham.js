@@ -1,33 +1,33 @@
+let c = document.getElementById("pepe");
+let ctx = c.getContext("2d");
 
-var canvas = document.getElementById("pepe");
-var context = canvas.getContext("2d");
+c.width = window.innerWidth;
+c.height = window.innerHeight;
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+let char = {};
+char.w = c.height * 0.1;
+char.h = c.height * 0.1;
+char.x = c.width / 2 - char.w / 2;
+char.y = c.height / 2 - char.h / 2;
+char.v = 1.0;
+char.d = Math.floor(Math.random() * Math.PI * 2);
 
+var aa = new Audio("aa.m4a");
 
-
-var pepe = {
-    "width":30,
-    "height":30
-}
-pepe.x = canvas.width / 2 - pepe.width / 2;
-pepe.y = canvas.height / 2 - pepe.height / 2;
-
-context.fillStyle = "black";
 
 setInterval(function() {
-    canvas.width = canvas.width
-    context.fillRect(pepe.x, pepe.y, pepe.width, pepe.height);
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(char.x, char.y, char.w, char.h);
+    char.x += (char.v - 1) * Math.sin(char.d);
+    char.y += (char.v - 1) * Math.cos(char.d);
+    if (char.v > 1) {char.v *= 0.9;} else {char.v = 1.0}
     
-    context.stroke();
-}, 5)
 
-var kakka = 0
-
-setInterval(function()  {
-    pepe.y =  (canvas.height / 2 - pepe.height / 2) + (canvas.height / 4) * Math.sin(kakka * 6.3);
-    pepe.x =  (canvas.width / 2 - pepe.width / 2) + (canvas.height / 4)  * Math.cos(kakka * 6.3);
-    console.log(Math.sin(1000 * kakka * 6.3))
-    kakka += 0.001;
-}, 5);
+}, 1000 / 60);
+document.onmousedown = function() {
+    aa.play();
+    char.v = 20.0;
+    char.d = Math.random() * Math.PI * 2;
+};
