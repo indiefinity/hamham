@@ -32,8 +32,6 @@ ctx.fillStyle = "000000"
 update = setInterval(function() {
     document.body.scrollTop = 0;
 
-    
-
     if (car.x < 0) {car.x = 0};
     if (car.x + car.w > w) {car.x = w - car.w};
     if (car.y < 0) {car.y = 0};
@@ -41,7 +39,7 @@ update = setInterval(function() {
     if ((speed != 0 && !forward && !back) || speed > 2) {speed *= 0.99;};
     if (forward) {
         if (!offroad) {if (motor.currentTime > 0.5) {motor.currentTime = 0.1}; motor.play();}
-        else {if (motor2.currentTime > 0.5) {motor.currentTime = 0.1}; speed = 0.5; motor2.play();}
+        else {if (motor2.currentTime > 0.5) {motor2.currentTime = 0.1}; speed = 0.5; motor2.play();}
 
         if (speed < 2) {
             if (speed < 0.25) {speed = 0.25;} else {speed *= 1.025;};
@@ -66,8 +64,6 @@ update = setInterval(function() {
                 offroad = true;
         };
     };
-
-
 
     c.width = c.width;
 
