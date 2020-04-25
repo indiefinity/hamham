@@ -57,14 +57,14 @@ update = setInterval(function() {
     car.x += h*speed/1000 * Math.cos(slide);
     car.y += h*speed/1000 * Math.sin(slide);
 
-
+    offroad = false;
     for (i = 0; i < deathBox.x.length; i++) {
         if (car.x + car.w > deathBox.x[i] &&
             car.x < deathBox.x[i] + deathBox.w[i] &&
             car.y + car.h > deathBox.y[i] &&
             car.y < deathBox.y[i] + deathBox.h[i]) {
                 offroad = true;
-        } else {offroad = false;};
+        };
     };
 
 
