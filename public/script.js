@@ -17,18 +17,17 @@ car.y = h/2 - (car.h/2);
 var speed = 0;
 var slide;
 
+deathBox = {
+    "w":[h/5, h/5],
+    "h":[h/7.5, h/6],
+    "x":[50, 400],
+    "y":[50, 100]
+}
 
 
-
-
-
-fullWindowState = true;
-
-
-
+ctx.fillStyle = "000000"
 
 update = setInterval(function() {
-    fullWindowState = true;
     document.body.scrollTop = 0;
 
     if (car.x < 0) {car.x = 0};
@@ -39,8 +38,8 @@ update = setInterval(function() {
     if (forward && speed < 2) {
         if (speed < 0.25) {speed = 0.25;} else {speed *= 1.025;};
     };
-    if (back) {
-        if (speed > -0,25) {speed = -0.25;} else {speed *= 1.025;};
+    if (back && speed > -2) {
+        if (speed > -0.25) {speed = -0.25;} else {speed *= 1.025;};
     };
     if (left) {car.d -= speed/75;};
     if (right) {car.d += speed/75;};
@@ -49,11 +48,22 @@ update = setInterval(function() {
     car.y += h*speed/1000 * Math.sin(slide);
 
 
+    for (i = 0; i < deathBox.x.length; i++) {
+        if (car.x + car.w > deathBox.x[i] &&
+            car.x < deathBox.x[i] + deathBox.w[i] &&
+            car.y + car.h > deathBox.y[i] &&
+            car.y < deathBox.y[i] + deathBox.h[i]) {
+                console.log("kualit");
+        };
+    };
+
+
 
     c.width = c.width;
 
-
-
+    for (i = 0; i < deathBox.x.length; i++) {
+        ctx.fillRect(deathBox.x[i], deathBox.y[i], deathBox.w[i], deathBox.h[i]);
+    };
     ctx.translate(car.x + (car.w / 2), car.y + (car.h / 2));
     ctx.rotate(car.d);
     ctx.drawImage(redCar, -car.w / 2, -car.h / 2, car.w, car.h);
@@ -62,7 +72,6 @@ update = setInterval(function() {
 }, 1 / 24);
 
 var forward, left, right, back;
-
 document.body.onkeydown = function(e){
     if(e.key == "w"){forward = true;};
     if(e.key == "a"){left = true;};
@@ -76,7 +85,3 @@ document.body.onkeyup = function(e){
     if(e.key == "s"){back = false;};
     if(e.key == "d"){right = false;};
 };
-
-
-
-
