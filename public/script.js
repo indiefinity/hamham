@@ -22,16 +22,20 @@ var slide;
 
 
 
+fullWindowState = true;
 
 
 
 
 update = setInterval(function() {
+    fullWindowState = true;
+    document.body.scrollTop = 0;
+
     if (car.x < 0) {car.x = 0};
     if (car.x + car.w > w) {car.x = w - car.w};
     if (car.y < 0) {car.y = 0};
     if (car.y + car.h > h) {car.y = h - car.h};
-    if ((speed != 0 && !forward && !back) || speed > 2) {speed *= 0.975;};
+    if ((speed != 0 && !forward && !back) || speed > 2) {speed *= 0.99;};
     if (forward && speed < 2) {
         if (speed < 0.25) {speed = 0.25;} else {speed *= 1.025;};
     };
@@ -64,7 +68,7 @@ document.body.onkeydown = function(e){
     if(e.key == "a"){left = true;};
     if(e.key == "s"){back = true;};
     if(e.key == "d"){right = true;};
-    if(e.key == " "){speed = 10;};
+    if(e.key == " "){speed = 7.5;};
 };
 document.body.onkeyup = function(e){
     if(e.key == "w"){forward = false;};
