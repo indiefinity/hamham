@@ -25,8 +25,8 @@ deathBox = {
 }
 
 var motor = new Audio("assets/motor.mp3")
-
-
+var motor2 = new Audio("assets/motor2.mp3")
+var offroad = false;
 
 ctx.fillStyle = "000000"
 update = setInterval(function() {
@@ -39,9 +39,10 @@ update = setInterval(function() {
     if (car.y < 0) {car.y = 0};
     if (car.y + car.h > h) {car.y = h - car.h};
     if ((speed != 0 && !forward && !back) || speed > 2) {speed *= 0.99;};
-    if (forward && speed < 2) {
-        
-        if (motor.currentTime > 0.5) {motor.currentTime = 0.1} 
+    if (forward) {
+        if (!offroad) {if (motor.currentTime > 0.5) {motor.currentTime = 0.1}; motor.play();}
+        else {if (motor2.currentTime > 0.5) {motor.currentTime = 0.1}; speed = 0.5; motor2.play();}
+
         if (speed < 2) {
             if (speed < 0.25) {speed = 0.25;} else {speed *= 1.025;};
         }
@@ -62,8 +63,8 @@ update = setInterval(function() {
             car.x < deathBox.x[i] + deathBox.w[i] &&
             car.y + car.h > deathBox.y[i] &&
             car.y < deathBox.y[i] + deathBox.h[i]) {
-                console.log("kualit");
-        };
+                offroad = true;
+        } else {offroad = false;};
     };
 
 
@@ -82,7 +83,7 @@ update = setInterval(function() {
 
 var forward, left, right, back;
 document.body.onkeydown = function(e){
-    if(e.key == "w"){forward = true; motor.play();};
+    if(e.key == "w"){forward = true;};
     if(e.key == "a"){left = true;};
     if(e.key == "s"){back = true;};
     if(e.key == "d"){right = true;};
