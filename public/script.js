@@ -8,36 +8,48 @@ h = c.height;
 
 redCar = document.getElementById("redCar");
 car = {
-    "w":h/25,
-    "h":h/25,
+    "w":h/20,
+    "h":h/20,
     "d":0
 };
 car.x = w/2 - (car.w/2);
 car.y = h/2 - (car.h/2);
-var rawSpeed = 1
+var speed = 0;
+var slide;
+
+
+
+
+
+
+
+
+
+
 update = setInterval(function() {
-    var speed = h*rawSpeed/1000
-    console.log(rawSpeed + ", " + speed)
-    if (rawSpeed > 1) {rawSpeed *= 0.99} else {rawSpeed = 1}
+    if (car.x < 0) {car.x = 0};
+    if (car.x + car.w > w) {car.x = w - car.w};
+    if (car.y < 0) {car.y = 0};
+    if (car.y + car.h > h) {car.y = h - car.h};
+    if ((speed != 0 && !forward && !back) || speed > 2) {speed *= 0.975;};
+    if (forward && speed < 2) {
+        if (speed < 0.25) {speed = 0.25;} else {speed *= 1.025;};
+    };
+    if (back) {
+        if (speed > -0,25) {speed = -0.25;} else {speed *= 1.025;};
+    };
+    if (left) {car.d -= speed/75;};
+    if (right) {car.d += speed/75;};
+    if (speed < 3) {slide = car.d}
+    car.x += h*speed/1000 * Math.cos(slide);
+    car.y += h*speed/1000 * Math.sin(slide);
 
-
-    if (forward) {
-        car.x += speed * Math.cos(car.d);
-        car.y += speed * Math.sin(car.d);
-    };
-    if (back) {    
-        car.x -= speed * Math.cos(car.d);
-        car.y -= speed * Math.sin(car.d);
-    };
-    if (left && forward || back) {
-        car.d -= speed/75;
-    };
-    if (right && forward || back) {
-        car.d += speed/75;
-    };
 
 
     c.width = c.width;
+
+
+
     ctx.translate(car.x + (car.w / 2), car.y + (car.h / 2));
     ctx.rotate(car.d);
     ctx.drawImage(redCar, -car.w / 2, -car.h / 2, car.w, car.h);
@@ -45,22 +57,22 @@ update = setInterval(function() {
     ctx.translate(-(car.x + (car.w / 2)), -(car.y + (car.h / 2)));
 }, 1 / 24);
 
-
 var forward, left, right, back;
 
-
 document.body.onkeydown = function(e){
-    console.log(e.key);
     if(e.key == "w"){forward = true;};
     if(e.key == "a"){left = true;};
     if(e.key == "s"){back = true;};
     if(e.key == "d"){right = true;};
-    if(e.key == " "){rawSpeed = 5;};
+    if(e.key == " "){speed = 10;};
 };
 document.body.onkeyup = function(e){
-    console.log(e.key);
     if(e.key == "w"){forward = false;};
     if(e.key == "a"){left = false;};
     if(e.key == "s"){back = false;};
     if(e.key == "d"){right = false;};
 };
+
+
+
+
