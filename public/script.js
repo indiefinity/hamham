@@ -24,11 +24,15 @@ deathBox = {
     "y":[50, 100]
 }
 
+var motor = new Audio("assets/motor.mp3")
+
+
 
 ctx.fillStyle = "000000"
-
 update = setInterval(function() {
     document.body.scrollTop = 0;
+
+    
 
     if (car.x < 0) {car.x = 0};
     if (car.x + car.w > w) {car.x = w - car.w};
@@ -36,7 +40,12 @@ update = setInterval(function() {
     if (car.y + car.h > h) {car.y = h - car.h};
     if ((speed != 0 && !forward && !back) || speed > 2) {speed *= 0.99;};
     if (forward && speed < 2) {
-        if (speed < 0.25) {speed = 0.25;} else {speed *= 1.025;};
+        
+        if (motor.currentTime > 0.5) {motor.currentTime = 0.1} 
+        if (speed < 2) {
+            if (speed < 0.25) {speed = 0.25;} else {speed *= 1.025;};
+        }
+        
     };
     if (back && speed > -2) {
         if (speed > -0.25) {speed = -0.25;} else {speed *= 1.025;};
@@ -73,7 +82,7 @@ update = setInterval(function() {
 
 var forward, left, right, back;
 document.body.onkeydown = function(e){
-    if(e.key == "w"){forward = true;};
+    if(e.key == "w"){forward = true; motor.play();};
     if(e.key == "a"){left = true;};
     if(e.key == "s"){back = true;};
     if(e.key == "d"){right = true;};
