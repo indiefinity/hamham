@@ -32,20 +32,17 @@ ctx.fillStyle = "000000"
 update = setInterval(function() {
     document.body.scrollTop = 0;
 
+
+    if (speed != 0) {
+        if (!offroad) {if (motor.currentTime > 0.5) {motor.currentTime = 0.1}; motor.play();}
+        else {if (motor2.currentTime > 0.5) {motor2.currentTime = 0.1}; speed = 0.5; motor2.play();}
+    }
     if (car.x < 0) {car.x = 0};
     if (car.x + car.w > w) {car.x = w - car.w};
     if (car.y < 0) {car.y = 0};
     if (car.y + car.h > h) {car.y = h - car.h};
     if ((speed != 0 && !forward && !back) || speed > 2) {speed *= 0.99;};
-    if (forward) {
-        if (!offroad) {if (motor.currentTime > 0.5) {motor.currentTime = 0.1}; motor.play();}
-        else {if (motor2.currentTime > 0.5) {motor2.currentTime = 0.1}; speed = 0.5; motor2.play();}
-
-        if (speed < 2) {
-            if (speed < 0.25) {speed = 0.25;} else {speed *= 1.025;};
-        }
-        
-    };
+    if (forward && speed < 2) {if (speed < 0.25) {speed = 0.25;} else {speed *= 1.025;};};
     if (back && speed > -2) {
         if (speed > -0.25) {speed = -0.25;} else {speed *= 1.025;};
     };
@@ -83,7 +80,9 @@ document.body.onkeydown = function(e){
     if(e.key == "a"){left = true;};
     if(e.key == "s"){back = true;};
     if(e.key == "d"){right = true;};
-    if(e.key == " "){speed = 7.5;};
+    if(e.key == " "){
+        if (speed > 0.1) {speed = 5};
+    };
 };
 document.body.onkeyup = function(e){
     if(e.key == "w"){forward = false;};
