@@ -1,5 +1,4 @@
 var balls = [];
-var scale;
 function setup() {
     createCanvas(innerWidth, innerHeight);
     background(0);
