@@ -1,4 +1,4 @@
-/* .outlined {
+.outlined {
     color: #fff;
     text-shadow: #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,    #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;
     -webkit-font-smoothing: antialiased;
@@ -89,4 +89,4 @@ body {
     40%, 100% {
       transform: rotateZ(0deg);
     }
-} */
+}
