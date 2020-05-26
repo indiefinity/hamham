@@ -21,22 +21,24 @@ function draw() {
 class Ball {
     constructor() {
         this.r = 15;
-        this.v = 0.1;
+        this.v = 1;
         this.x = random(this.r, width - this.r);
         this.y = random(this.r, height - this.r);
         this.d = random(360);
     }
     draw() {
-        noStroke();
+        //noStroke();
         colorMode(HSB);
         fill(map(this.v, 0, 20, 0 , 255) % 255, 255, 255);
         circle(this.x, this.y, this.r*2);
     }
     move() {
         
-
-        this.v += 1 / dist(this.x, this.y, mouseX, mouseY);
-        this.v *= 0.94
+        
+        translate(this.x, this.y);
+        this.d = atan2(mouseY, mouseX);
+        //this.v += 1 / dist(this.x, this.y, mouseX, mouseY);
+        //this.v *= 0.94
         if (this.v < 0.1) {this.v = 0.1}
         this.x += this.v * cos(this.d);
         this.y += this.v * sin(this.d);
