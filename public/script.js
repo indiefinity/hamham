@@ -35,7 +35,7 @@ class Ball {
     move() {
         
 
-        this.v *= sqrt(dist(this.x, this.y, mouseX, mouseY));
+        this.v += 1 / dist(this.x, this.y, mouseX, mouseY);
         this.v *= 0.94
         if (this.v < 0.1) {this.v = 0.1}
         this.x += this.v * cos(this.d);
