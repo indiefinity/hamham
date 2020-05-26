@@ -36,7 +36,7 @@ class Ball {
         
 
         this.v += 2 / dist(this.x, this.y, mouseX, mouseY);
-        this.v *= 0.92
+        this.v *= 0.94
         if (this.v < 0.1) {this.v = 0.1}
         this.x += this.v * cos(this.d);
         this.y += this.v * sin(this.d);
