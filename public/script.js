@@ -36,7 +36,8 @@ class Ball {
         
         
         translate(this.x, this.y);
-        this.d = atan2(mouseY, mouseX);
+        this.d = atan2(mouseY - this.y, mouseX - this.x);
+        translate(-this.x, -this.y)
         //this.v += 1 / dist(this.x, this.y, mouseX, mouseY);
         //this.v *= 0.94
         if (this.v < 0.1) {this.v = 0.1}
