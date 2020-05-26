@@ -3,7 +3,7 @@ function setup() {
     createCanvas(innerWidth, innerHeight);
     background(0);
     angleMode(DEGREES);
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 1000000; i++) {
         balls[i] = new Ball();
         console.log("aa")
     }
