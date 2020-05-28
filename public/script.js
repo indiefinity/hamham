@@ -21,23 +21,10 @@ class Ball {
   }
 
   do() {
-    let x = p5.Vector.sub(mouse, this.p).setMag(40);
-    drawArrow(this.p, x, "red");
-    this.p = p5.Vector.add(this.p, x.setMag(2));
+    let x = p5.Vector.sub(mouse, this.p);
+    drawArrow(this.p, x.setMag(40), "red");
+    this.p = p5.Vector.add(this.p, x.setMag(20));
   }
 }
 
 
-function drawArrow(base, vec, myColor) {
-  push();
-  stroke(myColor);
-  strokeWeight(3);
-  fill(myColor);
-  translate(base.x, base.y);
-  line(0, 0, vec.x, vec.y);
-  rotate(vec.heading());
-  let arrowSize = 7;
-  translate(vec.mag() - arrowSize, 0);
-  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
-  pop();
-}
