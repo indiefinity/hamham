@@ -1,51 +1,41 @@
 let balls = [];
+let mouse;
 function setup() {
-    createCanvas(600,400);
-    angleMode(DEGREES);
-    for (let i = 0; i < 25; i++) {
-        balls[i] = new Ball();
-    }
+  createCanvas(innerWidth, innerHeight);
+  for (let i = 0; i < 10; i++) {
+    balls[i] = new Ball();
+  }
 }
 
 function draw() {
-    background(0);
-    for (let i = 0; i < balls.length; i++) {
-        balls[i].move();
-        balls[i].draw();
-    }
+  background(255);
+  mouse = createVector(mouseX, mouseY);
+  for (let i = 0; i < balls.length; i++) {
+    balls[i].do();
+  }
 }
 
 class Ball {
-    constructor() {
-        
-        this.r = 15;
-        this.v = 1;
-        this.x = random(this.r, width - this.r);
-        this.y = random(this.r, height - this.r);
-        this.d = random(360);
-    }
-    draw() {
-        //noStroke();
-        colorMode(HSB);
-        fill(map(this.v, 0, 20, 0 , 255) % 255, 255, 255);
-        circle(this.x, this.y, this.r*2);
-    }
-    move() {
-        
-        
-        translate(this.x, this.y);
-        this.d = atan2(mouseY - this.y, mouseX - this.x);
-        translate(-this.x, -this.y)
-        //this.v += 1 / dist(this.x, this.y, mouseX, mouseY);
-        //this.v *= 0.94
-        if (this.v < 0.1) {this.v = 0.1}
-        this.x += this.v * cos(this.d);
-        this.y += this.v * sin(this.d);
+  constructor() {
+    this.p = createVector(random(width), random(height));
+  }
 
-        if (this.x - this.r < 0 ||
-            this.x + this.r > width) {this.d = 180 - this.d;};
+  do() {
+    drawArrow(this.p, p5.Vector.sub(mouse, this.p).setMag(40), "red");
+  }
+}
 
-        if (this.y - this.r < 0 ||
-            this.y + this.r > height) {this.d = 360 - this.d;};
-    }
+
+function drawArrow(base, vec, myColor) {
+  push();
+  stroke(myColor);
+  strokeWeight(3);
+  fill(myColor);
+  translate(base.x, base.y);
+  line(0, 0, vec.x, vec.y);
+  rotate(vec.heading());
+  let arrowSize = 7;
+  translate(vec.mag() - arrowSize, 0);
+  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+  pop();
 }
