@@ -21,7 +21,9 @@ class Ball {
   }
 
   do() {
-    drawArrow(this.p, p5.Vector.sub(mouse, this.p).setMag(40), "red");
+    let x = p5.Vector.sub(mouse, this.p).setMag(40);
+    drawArrow(this.p, x, "red");
+    this.p = p5.Vector.add(this.p, x.setMag(2));
   }
 }
 
