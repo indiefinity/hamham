@@ -26,6 +26,7 @@ function draw() {
 }
 
 let borders = false;
+let gravity = false;
 
 function keyPressed() {
   
@@ -50,6 +51,18 @@ function keyPressed() {
     console.log("ballcount decreased");
     makeBalls(ballCount);
   }
+  
+  if (keyCode === 71) {
+    if (gravity) {
+      console.log("gravity off");
+      gravity = false;
+    }
+    else {
+      console.log("gravity on");
+      gravity = true;
+    }
+  }
+  
 }
 
 let mousepressed = false;
@@ -84,9 +97,17 @@ class Ball {
       }
     }
     
+    
+    
     if(mouseIsPressed) {
       let x = p5.Vector.sub(mouse, this.p);
       this.v.add(x.setMag(1));
+      
+    }
+    else {
+      if (gravity) {
+        this.v.add(0, 0.5);
+      }
     }
     
     this.v.mult(0.99);
