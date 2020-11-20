@@ -9,12 +9,13 @@ function setup() {
 
   balls = [];
   for (let i = 0; i < ballCount; i++) {
-    balls[i] = new Ball();
+    balls[i] = new Ball(random(width), random(height));
   }
 }
 
 
 function draw() {
+  
   background(0, 240);
   mouse = createVector(mouseX, mouseY);
   
@@ -43,7 +44,7 @@ function keyPressed() {
       console.log("ballcount increased");
       ballCount *= 2;
       while (balls.length < ballCount) {
-        balls[balls.length] = new Ball();
+        balls[balls.length] = new Ball(balls[floor(random(balls.length))].p.x, balls[floor(random(balls.length))].p.y);
       }
       break;
 
@@ -72,14 +73,25 @@ function keyPressed() {
 
 class Ball {
   
-  constructor() {
-    this.p = createVector(random(width), random(height));
+  constructor(_x, _y) {
+    this.p = createVector(_x, _y);
     this.v = createVector(0,0);
   }
 
   do() {
     fill(map(this.v.mag(), 0, 50, 0, 255),255,255);
     
+    if(mouseIsPressed) {
+      let x = p5.Vector.sub(mouse, this.p);
+      this.v.add(x.setMag(1));
+      
+    }
+    else {
+      if (gravity) {
+        this.v.add(0, 0.5);
+      }
+    }
+
     if (borders) {
       if (this.p.x < 0) {
         console.log(this.v.x)
@@ -100,19 +112,7 @@ class Ball {
       }
     }
     
-    
-    
-    if(mouseIsPressed) {
-      let x = p5.Vector.sub(mouse, this.p);
-      this.v.add(x.setMag(1));
-      
-    }
-    else {
-      if (gravity) {
-        this.v.add(0, 0.5);
-      }
-    }
-    
+
     this.v.mult(0.99);
     this.p.add(this.v);
     

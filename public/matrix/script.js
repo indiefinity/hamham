@@ -7,7 +7,7 @@ let chars = "qwertyuiopasdfghjklzxcvbnm1234567890";
 class Gongoozler {
   constructor() {
     this.x = random(width);
-    this.s = random(20);
+    this.s = random(innerHeight / 25);
     this.y = random(height);
   }
   do() {
