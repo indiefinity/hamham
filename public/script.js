@@ -10,7 +10,7 @@ function setup() {
 
   balls = [];
   for (let i = 0; i < ballCount; i++) {
-    balls[i] = new Ball(random(width) / 2 + width / 4, random(height) / 2 + width / 4);
+    balls[i] = new Ball(random(width) / 2 + width / 4, random(height) / 2 + height / 4);
   }
 }
 
