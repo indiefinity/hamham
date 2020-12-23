@@ -13,8 +13,9 @@ body {
 }
 
 .centered {
-  /* margin: auto; */
+  margin: auto;
   position: absolute;
+  text-align: center;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
@@ -22,6 +23,7 @@ body {
 }
 
 .gamebox {
+  border-radius: 25px;
   height: 250px;
   width: 250px;
   margin: 20px;
@@ -35,9 +37,9 @@ body {
   background-image: url("matrix.png");
 }
 
-#jokediv {
+/* #jokediv {
   background-image: url("joke.png");
-}
+} */
 
 .slider { 
   -webkit-appearance: none; 
