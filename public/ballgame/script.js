@@ -1,6 +1,7 @@
 let balls = [];
 let mouse;
-let ballCount = 1000;
+let ballCount = Math.pow(2,8);
+
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
@@ -9,7 +10,7 @@ function setup() {
 
   balls = [];
   for (let i = 0; i < ballCount; i++) {
-    balls[i] = new Ball(random(width), random(height));
+    balls[i] = new Ball(random(width) / 2 + width / 4, random(height) / 2 + height / 4);
   }
 }
 
@@ -50,7 +51,8 @@ function keyPressed() {
 
     case 40:
       console.log("ballcount decreased");
-      ballCount *= 1 / 2;
+      if (ballCount > 1)
+      ballCount /= 2;
       while (balls.length > ballCount) {
         delete balls[balls.length - 1];
         balls.pop();
@@ -75,7 +77,7 @@ class Ball {
   
   constructor(_x, _y) {
     this.p = createVector(_x, _y);
-    this.v = createVector(0,0);
+    this.v = createVector(random(5) - 2.5,random(5) - 2.5);
   }
 
   do() {
@@ -83,6 +85,7 @@ class Ball {
     
     if(mouseIsPressed) {
       let x = p5.Vector.sub(mouse, this.p);
+      console.log(x.getMag)
       this.v.add(x.setMag(1));
       
     }
@@ -119,5 +122,3 @@ class Ball {
     circle(this.p.x, this.p.y, 10);
   }
 }
-
-

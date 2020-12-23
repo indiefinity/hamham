@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 let balls = [];
 let mouse;
 let ballCount = Math.pow(2,8);
@@ -124,5 +122,3 @@ class Ball {
     circle(this.p.x, this.p.y, 10);
   }
 }
-
->>>>>>> 86f70b926d2e5d206fe248c51f33887f9583c6ee
