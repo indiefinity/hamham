@@ -1,59 +1,72 @@
 .outlined {
-    color: #fff;
-    text-shadow: #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,    #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;
-    -webkit-font-smoothing: antialiased;
-}
-body {
-    margin: 0;
-    overflow: hidden;
-    font-family: Ubuntu;
+  color: #fff;
+  text-shadow: #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,  #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;
+  -webkit-font-smoothing: antialiased;
+  margin: 10px;
 }
 
-#centered {
-    height:100%;
-    width: 100%;
-    padding: 0;
-    vertical-align: middle;
-    text-align: center;
+body {
+  overflow: hidden;
+  font-family: Ubuntu;
+  color: white;
 }
-  
+
+.centered {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.gamebox {
+  height: 250px;
+  width: 250px;
+  margin: 20px;
+}
+
+#ballgameimg {
+  background-image: url("ballgame.png");
+}
+
 .slider { 
-    -webkit-appearance: none; 
-    width: 75%;
-    height: 32px;
-    outline: none;
-    background: rgba(255, 255, 255, 0.1);
-   opacity: 0.75;
-    -webkit-transition: .5s;
-    transition: opacity .5s;
+  -webkit-appearance: none; 
+  width: 75%;
+  height: 32px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.75;
+  -webkit-transition: .5s;
+  transition: opacity .5s;
 }
   
 .slider:hover {
-    opacity: 1;
+  opacity: 1;
 }
   
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 32px;
-    height: 32px;
-    background: rgb(0, 0, 0);
+  -webkit-appearance: none;
+  width: 32px;
+  height: 32px;
+  background: rgb(0, 0, 0);
 }
   
 .button {
-    transform: rotate(0deg);
-    outline: none; 
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.2);
-    padding: 15px 32px;
-    font-family: Ubuntu;
-    font-size: 20px;
-    background-color: white;
-    border: 2px solid black;
+  transform: rotate(0deg);
+  outline: none; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.2);
+  padding: 15px 32px;
+  font-family: Ubuntu;
+  font-size: 20px;
+  background-color: white;
+  border: 2px solid black;
 }
 .shadow:hover {
-    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.3);
 }
 .wiggle:hover {   
-    animation: wiggle 2s linear infinite;
+  animation: wiggle 2s linear infinite;
 }
 .input {
   transform: rotate(0deg);
@@ -68,25 +81,25 @@ body {
 }
 
 @keyframes wiggle {
-    0% {
-      transform: rotateZ(0deg);
-    }
-    15% {
-      transform: rotateZ(-15deg);
-    }
-    20% {
-      transform: rotateZ(10deg);
-    }
-    25% {
-      transform: rotateZ(-10deg);
-    }
-    30% {
-      transform: rotateZ(5deg);
-    }
-    35% {
-      transform: rotateZ(-5deg);
-    }
-    40%, 100% {
-      transform: rotateZ(0deg);
-    }
+  0% {
+    transform: rotateZ(0deg);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(5deg);
+  }
+  35% {
+    transform: rotateZ(-5deg);
+  }
+  40%, 100% {
+    transform: rotateZ(0deg);
+  }
 }
