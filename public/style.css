@@ -12,21 +12,35 @@ body {
   margin: 0;
 }
 
-.centered {
-  margin: auto;
+.outer {
+  display: table;
   position: absolute;
-  text-align: center;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flexwrap {
+  display: flex; /* or inline-flex */
+  justify-content: center;
 }
 
 .gamebox {
   border-radius: 25px;
   height: 250px;
   width: 250px;
-  margin: 20px;
+  margin: 10px;
 }
 
 #ballgamediv {
