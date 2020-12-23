@@ -6,6 +6,7 @@
 }
 
 body {
+  background-color: rgb(15, 15, 15);
   overflow: hidden;
   font-family: Ubuntu;
   color: white;
@@ -31,12 +32,13 @@ body {
   margin-right: auto;
 }
 
-.flexwrap {
+.flex {
   display: flex; /* or inline-flex */
   justify-content: center;
 }
 
 .gamebox {
+  background-size: cover;
   border-radius: 25px;
   height: 250px;
   width: 250px;
@@ -49,6 +51,10 @@ body {
 
 #matrixdiv {
   background-image: url("matrix.png");
+}
+
+#randomdiv {
+  background-image: url("random.jpg");
 }
 
 /* #jokediv {
