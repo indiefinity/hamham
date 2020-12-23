@@ -9,6 +9,7 @@ body {
   overflow: hidden;
   font-family: Ubuntu;
   color: white;
+  margin: 0;
 }
 
 .centered {
