@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: rgb(15, 15, 15);
+  background-color: rgb(12, 12, 12);
   overflow: hidden;
   font-family: Ubuntu;
   color: white;
@@ -55,6 +55,10 @@ body {
 
 #randomdiv {
   background-image: url("random.jpg");
+}
+
+#kelkkadiv {
+  background-image: url("kelkka.png");
 }
 
 /* #jokediv {
