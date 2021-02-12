@@ -6,18 +6,21 @@ let ballCount = Math.pow(2,8);
 function setup() {
   createCanvas(innerWidth, innerHeight);
   noStroke();
-  colorMode(HSB)
+  colorMode(HSB);
+  angleMode(DEGREES);
 
   balls = [];
   for (let i = 0; i < ballCount; i++) {
-    balls[i] = new Ball(random(width) / 2 + width / 4, random(height) / 2 + height / 4);
+    balls[i] = new Ball(createVector(random(width) / 2 + width / 4,
+    random(height) / 2 + height / 4),
+    createVector(random(5) - 2.5, random(5) - 2.5));
   }
 }
 
 
 function draw() {
   
-  background(0, 240);
+  background(0);
   mouse = createVector(mouseX, mouseY);
   
   for (let i = 0; i < balls.length; i++) {
@@ -44,8 +47,12 @@ function keyPressed() {
     case 38:
       console.log("ballcount increased");
       ballCount *= 2;
+
       while (balls.length < ballCount) {
-        balls[balls.length] = new Ball(balls[floor(random(balls.length))].p.x, balls[floor(random(balls.length))].p.y);
+        let mimic = balls[floor(random(balls.length))];
+        balls[balls.length] = new Ball(p5.Vector.add(mimic.p,
+        createVector(random(50) - 25, random(50) - 25)),
+        createVector(mimic.v.x, mimic.v.y));
       }
       break;
 
@@ -75,17 +82,16 @@ function keyPressed() {
 
 class Ball {
   
-  constructor(_x, _y) {
-    this.p = createVector(_x, _y);
-    this.v = createVector(random(5) - 2.5,random(5) - 2.5);
+  constructor(_p, _v) {
+    this.p = _p;
+    this.v = _v;
   }
 
   do() {
     fill(map(this.v.mag(), 0, 50, 0, 255),255,255);
-    
+  
     if(mouseIsPressed) {
       let x = p5.Vector.sub(mouse, this.p);
-      console.log(x.getMag)
       this.v.add(x.setMag(1));
       
     }
@@ -97,7 +103,6 @@ class Ball {
 
     if (borders) {
       if (this.p.x < 0) {
-        console.log(this.v.x)
         this.p.x = -this.p.x;
         this.v.x *= -1;
       }
