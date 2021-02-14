@@ -1,15 +1,17 @@
 let balls = [];
 let mouse;
 let ballCount = Math.pow(2,8);
-
+let frameCount = 0;
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
   noStroke();
-  colorMode(HSB);
   angleMode(DEGREES);
+  textAlign(CENTER);
+  textSize(50);
 
   balls = [];
+  
   for (let i = 0; i < ballCount; i++) {
     balls[i] = new Ball(createVector(random(width) / 2 + width / 4,
     random(height) / 2 + height / 4),
@@ -17,15 +19,39 @@ function setup() {
   }
 }
 
+let tutorial = [
+  "Hold mouse to atract balls to your cursor",
+  "Use up and down arrows to manage the number of balls",
+  "Press [B] to toggle borders",
+  "Press [G] to toggle gravity",
+  "Floor is broken for some reason"
+]
 
 function draw() {
-  
   background(0);
   mouse = createVector(mouseX, mouseY);
+
   
+  colorMode(HSB);
   for (let i = 0; i < balls.length; i++) {
     balls[i].do();
   }  
+  
+  colorMode(RGB);
+  if (frameCount < tutorial.length*4*60) {
+    if (Math.floor(frameCount / (60)) % 4 == 0) {
+      fill(255, map(frameCount % 60, 0, 60, 0, 255));
+    }
+    else if ( Math.floor(frameCount / (60)) % 4 == 3) {
+      fill(255, map(frameCount % 60, 0, 60, 255, 0));
+    }
+    else {
+      fill(255);
+    }
+    text(tutorial[Math.floor(frameCount / (4*60))], 0, 40, width);
+  }
+
+  frameCount++;
 }
 
 let borders = true;
@@ -81,7 +107,6 @@ function keyPressed() {
 
 
 class Ball {
-  
   constructor(_p, _v) {
     this.p = _p;
     this.v = _v;
@@ -115,7 +140,7 @@ class Ball {
         this.v.y *= -1;
       }
       else if (this.p.y >= height) {
-        this.p.y = height + ((height - this.p.y) & height) ;
+        this.p.y = height + ((height - this.p.y) & height);
         this.v.y *= -1;
       }
     }
