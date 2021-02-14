@@ -1,6 +1,6 @@
 let balls = [];
 let mouse;
-let ballCount = Math.pow(2,0);
+let ballCount = Math.pow(2,8);
 let frameCount = 0;
 
 function setup() {
@@ -76,7 +76,7 @@ function keyPressed() {
       while (balls.length < ballCount) {
         let mimic = balls[floor(random(balls.length))];
         balls[balls.length] = new Ball(p5.Vector.add(mimic.p,
-        createVector(random(50) - 25, random(50) - 25)),
+        createVector(random(200) - 100, random(200) - 100)),
         createVector(mimic.v.x, mimic.v.y));
       }
       break;
