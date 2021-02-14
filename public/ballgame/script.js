@@ -117,7 +117,6 @@ class Ball {
     if(mouseIsPressed) {
       let x = p5.Vector.sub(mouse, this.p);
       this.v.add(x.setMag(1));
-      
     }
     else {
       if (gravity) {
@@ -143,7 +142,6 @@ class Ball {
         this.v.y *= -1;
       }
     }
-  
 
     this.v.mult(0.99);
     this.p.add(this.v);
@@ -151,4 +149,3 @@ class Ball {
     circle(this.p.x, this.p.y, 10);
   }
 }
-
