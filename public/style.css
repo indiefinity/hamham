@@ -21,7 +21,9 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   height: 100%;
+  width: 100%;
 }
+
 
 .gamebox {
   background-size: cover;

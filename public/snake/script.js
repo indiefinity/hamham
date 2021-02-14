@@ -36,7 +36,27 @@ function start() {
 
 let pop;
 function draw() {
-  
+  if (moves[0] == 0) {
+    if (!(direction.x == 0 && direction.y == 1)) {
+      direction = {"x":0, "y":-1}
+    }
+  }
+  else if (moves[0] == 1) {
+    if (!(direction.x == 0 && direction.y == -1)) {
+      direction = {"x":0, "y":1}
+    }
+  }
+  else if (moves[0] == 2) {
+    if (!(direction.x == 1 && direction.y == 0)) {
+      direction = {"x":-1, "y":0}
+    }
+  }
+  else if (moves[0] == 3) {
+    if (!(direction.x == -1 && direction.y == 0)) {
+      direction = {"x":1, "y":0}
+    }
+  }
+  moves.shift();
   background(230, 230, 200);
   fill(245,245,235);
     for (let x = 0; x < game.width; x++) {
@@ -90,27 +110,21 @@ function draw() {
 
 }
 
+let moves = []
+
 function keyPressed() {
   switch(keyCode) {
     case 38:
-      if (!(direction.x == 0 && direction.y == 1)) {
-        direction = {"x":0, "y":-1}
-      }
+      moves.push(0);
       break;
     case 40:
-      if (!(direction.x == 0 && direction.y == -1)) {
-        direction = {"x":0, "y":1}
-      }
+      moves.push(1);
       break;
     case 37:
-      if (!(direction.x == 1 && direction.y == 0)) {
-        direction = {"x":-1, "y":0}
-      }
+      moves.push(2);
       break;
     case 39:
-      if (!(direction.x == -1 && direction.y == 0)) {
-        direction = {"x":1, "y":0}
-      }
+      moves.push(3);
       break;
   }
 }
