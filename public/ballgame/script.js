@@ -1,6 +1,6 @@
 let balls = [];
 let mouse;
-let ballCount = Math.pow(2,8);
+let ballCount = Math.pow(2,0);
 let frameCount = 0;
 
 function setup() {
@@ -132,7 +132,7 @@ class Ball {
         this.v.x *= -1;
       }
       else if (this.p.x >= width) {
-        this.p.x = width + ((width - this.p.x) % width);
+        this.p.x = width - ((width + this.p.x) % width);
         this.v.x *= -1;
       }
       if (this.p.y <= 0) {
@@ -140,7 +140,7 @@ class Ball {
         this.v.y *= -1;
       }
       else if (this.p.y >= height) {
-        this.p.y = height + ((height - this.p.y) & height);
+        this.p.y = height - ((height + this.p.y) & height);
         this.v.y *= -1;
       }
     }
