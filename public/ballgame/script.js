@@ -115,7 +115,7 @@ class Ball {
         this.v.y *= -1;
       }
       else if (this.p.y >= height) {
-        this.p.y = height + ((height - this.p.y) & height);
+        this.p.y = height + ((height - this.p.y) & height) ;
         this.v.y *= -1;
       }
     }
@@ -127,3 +127,4 @@ class Ball {
     circle(this.p.x, this.p.y, 10);
   }
 }
+
