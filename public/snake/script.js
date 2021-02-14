@@ -38,7 +38,7 @@ let pop;
 function draw() {
   
   background(230, 230, 200);
-  fill(255);
+  fill(245,245,235);
     for (let x = 0; x < game.width; x++) {
       for (let y = 0; y < game.height; y++) {
         rect(2 + game.offsetX + (x * game.gridSize), 2 + game.offsetY + (y * game.gridSize), game.gridSize - 4, game.gridSize - 4, game.gridSize / 3)
