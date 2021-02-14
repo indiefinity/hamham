@@ -23,8 +23,7 @@ let tutorial = [
   "Hold mouse to atract balls to your cursor",
   "Use up and down arrows to manage the number of balls",
   "Press [B] to toggle borders",
-  "Press [G] to toggle gravity",
-  "Floor is broken for some reason"
+  "Press [G] to toggle gravity"
 ]
 
 function draw() {
