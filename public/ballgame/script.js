@@ -28,7 +28,7 @@ function draw() {
   }  
 }
 
-let borders = false;
+let borders = true;
 let gravity = false;
 
 function keyPressed() {
@@ -102,24 +102,24 @@ class Ball {
     }
 
     if (borders) {
-      if (this.p.x < 0) {
-        this.p.x = -this.p.x;
+      if (this.p.x <= 0) {
+        this.p.x = -this.p.x % width;
         this.v.x *= -1;
       }
-      else if (this.p.x > width) {
-        this.p.x = width - (width - this.p.x);
+      else if (this.p.x >= width) {
+        this.p.x = width + ((width - this.p.x) % width);
         this.v.x *= -1;
       }
-      else if (this.p.y < 0) {
-        this.p.y = -this.p.y;
+      if (this.p.y <= 0) {
+        this.p.y = -this.p.y % height;
         this.v.y *= -1;
       }
-      else if (this.p.y > height) {
-        this.p.y = height - (height - this.p.y);
+      else if (this.p.y >= height) {
+        this.p.y = height + ((height - this.p.y) & height);
         this.v.y *= -1;
       }
     }
-    
+  
 
     this.v.mult(0.99);
     this.p.add(this.v);
