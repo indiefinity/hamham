@@ -56,29 +56,31 @@ function draw() {
       direction = {"x":1, "y":0}
     }
   }
+
   moves.shift();
   background(230, 230, 200);
   fill(245,245,235);
-    for (let x = 0; x < game.width; x++) {
-      for (let y = 0; y < game.height; y++) {
-        rect(2 + game.offsetX + (x * game.gridSize), 2 + game.offsetY + (y * game.gridSize), game.gridSize - 4, game.gridSize - 4, game.gridSize / 3)
+  for (let x = 0; x < game.width; x++) {
+    for (let y = 0; y < game.height; y++) {
+      rect(2 + game.offsetX + (x * game.gridSize), 2 + game.offsetY + (y * game.gridSize), game.gridSize - 4, game.gridSize - 4, game.gridSize / 3)
+    }
+  }
+  
+  snake.unshift({"x":snake[0].x + direction.x,"y":snake[0].y + direction.y});
+  
+  if (snake[0].x < 0 || snake[0].x >= game.width || snake[0].y < 0 || snake[0].y >= game.height) {
+    alive = false;
+  }
+  if (snake.length > 2) {
+    for (let i = 3; i < snake.length; i++) {
+      if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
+        console.log("bob")
+        alive = false;
       }
     }
+  }
+  
   if (alive) {
-    snake.unshift({"x":snake[0].x + direction.x,"y":snake[0].y + direction.y});
-  
-    if (snake[0].x < 0 || snake[0].x >= game.width || snake[0].y < 0 || snake[0].y >= game.height) {
-      alive = false;
-    }
-    if (snake.length > 2) {
-      for (let i = 3; i < snake.length; i++) {
-        if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
-          console.log("bob")
-          alive = false;
-        }
-      }
-    }
-  
     pop = true;
   
     for (let i = 0; i < snake.length; i++) {
