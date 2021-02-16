@@ -4,10 +4,12 @@ let fruit = {};
 let game = {
   "gridSize":64
 }
-let alive;
+let pop;
+let deathTimer = 0;
+let reducer = 0;
 function setup() {
   createCanvas(innerWidth, innerHeight);
-  frameRate(20);
+  frameRate(60);
   noStroke();
 
   game.width = Math.floor(width / game.gridSize);
@@ -15,10 +17,6 @@ function setup() {
 
   game.offsetX = (width % game.gridSize) / 2;
   game.offsetY = (height % game.gridSize) / 2;
-
-  
-  textAlign(CENTER, CENTER);
-  textSize(100);
 
   start();
 }
@@ -31,11 +29,54 @@ function start() {
   direction = {"x":0,"y":0}
   fruit.x = Math.floor(random(game.width));
   fruit.y = Math.floor(random(game.height));
-  alive = true;
 }
 
-let pop;
+
 function draw() {
+  if (reducer == 0) {
+    reducer = 4;
+    updt();
+  }
+  reducer--;
+
+
+  background(230, 230, 220);
+
+  fill(245,245,240);
+  for (let x = 0; x < game.width; x++) {
+    for (let y = 0; y < game.height; y++) {
+      rect(2 + game.offsetX + (x * game.gridSize), 2 + game.offsetY + (y * game.gridSize), game.gridSize - 4, game.gridSize - 4, game.gridSize / 3)
+    }
+  }
+  
+  fill(100,225,0);
+  for (let i = 0; i < snake.length; i++) {
+    rect(game.offsetX + (snake[i].x * game.gridSize), game.offsetY + (snake[i].y * game.gridSize), game.gridSize, game.gridSize, game.gridSize / 6)
+  }
+
+  fill(255,50,0);
+  circle((game.gridSize / 2) + game.offsetX + (fruit.x * game.gridSize), (game.gridSize / 2) + game.offsetY + (fruit.y * game.gridSize), game.gridSize * 0.8)
+
+  if (deathTimer > 0) {
+    fill(0);
+    if (deathTimer > 20) {
+      rect(0, 0, width, map(deathTimer, 30, 20, 0, height))
+    }
+    else if (deathTimer > 10) {
+      rect(0, 0, width, height);
+      if (deathTimer == 11) {
+        start();
+      }
+    }
+    else {
+      rect(0, map(deathTimer, 10, 0, 0, height), width, height)
+    }
+
+    deathTimer--;
+  }
+}
+
+function updt() {
   if (moves[0] == 0) {
     if (!(direction.x == 0 && direction.y == 1)) {
       direction = {"x":0, "y":-1}
@@ -58,59 +99,39 @@ function draw() {
   }
 
   moves.shift();
-  background(230, 230, 200);
-  fill(245,245,235);
-  for (let x = 0; x < game.width; x++) {
-    for (let y = 0; y < game.height; y++) {
-      rect(2 + game.offsetX + (x * game.gridSize), 2 + game.offsetY + (y * game.gridSize), game.gridSize - 4, game.gridSize - 4, game.gridSize / 3)
-    }
-  }
-  
+
   snake.unshift({"x":snake[0].x + direction.x,"y":snake[0].y + direction.y});
   
-  if (snake[0].x < 0 || snake[0].x >= game.width || snake[0].y < 0 || snake[0].y >= game.height) {
-    alive = false;
-  }
-  if (snake.length > 2) {
-    for (let i = 3; i < snake.length; i++) {
-      if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
-        console.log("bob")
-        alive = false;
+  if (deathTimer == 0) {
+    if (snake[0].x < 0 || snake[0].x >= game.width || snake[0].y < 0 || snake[0].y >= game.height) {
+      deathTimer = 30;
+    }
+    if (snake.length > 2) {
+      for (let i = 3; i < snake.length; i++) {
+        if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
+          deathTimer = 30;
+        }
       }
     }
   }
-  
-  if (alive) {
-    pop = true;
-  
-    for (let i = 0; i < snake.length; i++) {
-      if (snake[i].x == fruit.x && snake[i].y == fruit.y) {
-        console.log("joo")
-        fruit.x = Math.floor(random(game.width));
-        fruit.y = Math.floor(random(game.height));
-        pop = false
-      } 
-  
-    }
-    if (pop) {
-      snake.pop();
-    }
-    
-  
-    
-    fill(100,225,0);
-    for (let i = 0; i < snake.length; i++) {
-      rect(game.offsetX + (snake[i].x * game.gridSize), game.offsetY + (snake[i].y * game.gridSize), game.gridSize, game.gridSize, game.gridSize / 6)
-    }
-    fill(255,50,0);
-    circle((game.gridSize / 2) + game.offsetX + (fruit.x * game.gridSize), (game.gridSize / 2) + game.offsetY + (fruit.y * game.gridSize), game.gridSize * 0.8)
-  }
-  else {
-    start();
-  }
-  
 
+  pop = true;
+  
+  for (let i = 0; i < snake.length; i++) {
+    if (snake[i].x == fruit.x && snake[i].y == fruit.y) {
+      console.log("joo")
+      fruit.x = Math.floor(random(game.width));
+      fruit.y = Math.floor(random(game.height));
+      pop = false
+    } 
+
+  }
+  if (pop) {
+    snake.pop();
+  }
 }
+
+
 
 let moves = []
 
