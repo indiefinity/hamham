@@ -138,15 +138,19 @@ let moves = []
 function keyPressed() {
   switch(keyCode) {
     case 38:
+    case 87:
       moves.push(0);
       break;
     case 40:
+    case 83:
       moves.push(1);
       break;
     case 37:
+    case 65:
       moves.push(2);
       break;
     case 39:
+    case 68:
       moves.push(3);
       break;
   }
