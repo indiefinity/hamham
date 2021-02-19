@@ -19,6 +19,11 @@ function setup() {
   }
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+
 let tutorial = [
   "Hold mouse to atract balls to your cursor",
   "Use up and down arrows to manage the number of balls",
