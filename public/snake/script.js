@@ -21,6 +21,15 @@ function setup() {
   start();
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  game.width = Math.floor(width / game.gridSize);
+  game.height = Math.floor(height / game.gridSize);
+
+  game.offsetX = (width % game.gridSize) / 2;
+  game.offsetY = (height % game.gridSize) / 2;
+}
+
 function start() {
   
   snake = [{}];
