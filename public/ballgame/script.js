@@ -1,6 +1,6 @@
 let balls = [];
 let mouse;
-let ballCount = Math.pow(2,8);
+let ballCount = Math.pow(2,3);
 let frameCount = 0;
 
 function setup() {
@@ -15,7 +15,7 @@ function setup() {
   for (let i = 0; i < ballCount; i++) {
     balls[i] = new Ball(createVector(random(width) / 2 + width / 4,
     random(height) / 2 + height / 4),
-    createVector(random(5) - 2.5, random(5) - 2.5));
+    createVector(random(5) - 2.5, random(5) - 2.5), i);
   }
 }
 
@@ -23,7 +23,8 @@ let tutorial = [
   "Hold mouse to atract balls to your cursor",
   "Use up and down arrows to manage the number of balls",
   "Press [B] to toggle borders",
-  "Press [G] to toggle gravity"
+  "Press [G] to toggle gravity",
+  "Press [S] to toggle springy balls (laggy)"
 ]
 
 function draw() {
@@ -37,16 +38,28 @@ function draw() {
   }  
   
   colorMode(RGB);
+  strokeWeight(3)
   if (frameCount < tutorial.length*4*60) {
     if (Math.floor(frameCount / (60)) % 4 == 0) {
+      colorMode(RGB);
       fill(255, map(frameCount % 60, 0, 60, 0, 255));
+      colorMode(HSB);
+      stroke(frameCount % 255,255, map(frameCount % 60, 0, 60, 0, 255));
     }
     else if ( Math.floor(frameCount / (60)) % 4 == 3) {
+      colorMode(RGB);
       fill(255, map(frameCount % 60, 0, 60, 255, 0));
+      colorMode(HSB);
+      stroke(frameCount % 255,255, map(frameCount % 60, 0, 60, 255, 0));
     }
     else {
+      colorMode(RGB);
       fill(255);
+      colorMode(HSB);
+      stroke(frameCount % 255,255, 255)
     }
+    
+    
     text(tutorial[Math.floor(frameCount / (4*60))], 0, 40, width);
   }
 
@@ -55,6 +68,7 @@ function draw() {
 
 let borders = true;
 let gravity = false;
+let springy = false;
 
 function keyPressed() {
   switch(keyCode) {
@@ -77,7 +91,7 @@ function keyPressed() {
         let mimic = balls[floor(random(balls.length))];
         balls[balls.length] = new Ball(p5.Vector.add(mimic.p,
         createVector(random(200) - 100, random(200) - 100)),
-        createVector(mimic.v.x, mimic.v.y));
+        createVector(mimic.v.x, mimic.v.y), balls.length);
       }
       break;
 
@@ -90,7 +104,7 @@ function keyPressed() {
         balls.pop();
       }
       break;
-
+      
     case 71:
       if (gravity) {
         console.log("gravity off");
@@ -99,6 +113,17 @@ function keyPressed() {
       else {
         console.log("gravity on");
         gravity = true;
+      }
+      break;
+
+    case 83:
+      if (springy) {
+        console.log("springy off");
+        springy = false;
+      }
+      else {
+        console.log("springy on");
+        springy = true;
       break;
     }
   }
@@ -106,14 +131,13 @@ function keyPressed() {
 
 
 class Ball {
-  constructor(_p, _v) {
+  constructor(_p, _v, _id) {
     this.p = _p;
     this.v = _v;
+    this.id = _id;
   }
 
   do() {
-    fill(map(this.v.mag(), 0, 50, 0, 255),255,255);
-  
     if(mouseIsPressed) {
       let x = p5.Vector.sub(mouse, this.p);
       this.v.add(x.setMag(1));
@@ -145,7 +169,26 @@ class Ball {
 
     this.v.mult(0.99);
     this.p.add(this.v);
+
+    stroke(map(this.v.mag(), 0, 50, 0, 255),255,255);
+    strokeWeight(10)
+    point(this.p.x, this.p.y)
     
-    circle(this.p.x, this.p.y, 10);
+    if(springy) {
+      strokeWeight(2);
+      for (let i = 0; i < balls.length; i++) {
+        let dist = this.p.dist(balls[i].p)
+        colorMode(RGB)
+        stroke(255, 255, 255, map(dist, 0, 500, 127.5, 0))
+        colorMode(HSB)
+        line(this.p.x, this.p.y, balls[i].p.x, balls[i].p.y)
+
+        this.v.add(p5.Vector.sub(balls[i].p, this.p).setMag(10/pow(dist+1, 1.5)))
+      }
+    }
+    
+
+
+
   }
 }
