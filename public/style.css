@@ -49,6 +49,10 @@ body {
   background-image: url("random.jpg");
 }
 
+#bgdiv {
+  background-image: url("bg.png");
+}
+
 .slider { 
   -webkit-appearance: none; 
   width: 75%;

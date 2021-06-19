@@ -143,6 +143,22 @@ class Ball {
   }
 
   do() {
+    if(springy) {
+      strokeWeight(2);
+      for (let i = 0; i < balls.length; i++) {
+        if (i != this.id) {
+          let dist = this.p.dist(balls[i].p)
+          colorMode(RGB)
+          stroke(255, 255, 255, map(dist, 0, 200, 127.5, 0))
+          colorMode(HSB)
+          line(this.p.x, this.p.y, balls[i].p.x, balls[i].p.y)
+  
+          this.v.add(p5.Vector.sub(balls[i].p, this.p).setMag(100/pow(dist+10, 2)))
+        }
+
+      }
+    }
+
     if(mouseIsPressed) {
       let x = p5.Vector.sub(mouse, this.p);
       this.v.add(x.setMag(1));
@@ -179,18 +195,7 @@ class Ball {
     strokeWeight(10)
     point(this.p.x, this.p.y)
     
-    if(springy) {
-      strokeWeight(2);
-      for (let i = 0; i < balls.length; i++) {
-        let dist = this.p.dist(balls[i].p)
-        colorMode(RGB)
-        stroke(255, 255, 255, map(dist, 0, 500, 127.5, 0))
-        colorMode(HSB)
-        line(this.p.x, this.p.y, balls[i].p.x, balls[i].p.y)
-
-        this.v.add(p5.Vector.sub(balls[i].p, this.p).setMag(10/pow(dist+1, 1.5)))
-      }
-    }
+    
     
 
 
