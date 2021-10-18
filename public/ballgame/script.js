@@ -1,7 +1,9 @@
 let balls = [];
 let mouse;
-let ballCount = Math.pow(2,3);
+let ballCount = Math.pow(2,8);
 let frameCount = 0;
+let cursorWeight = 450;
+
 
 function setup() {
   createCanvas(innerWidth, innerHeight);
@@ -29,7 +31,7 @@ let tutorial = [
   "Use up and down arrows to manage the number of balls",
   "Press [B] to toggle borders",
   "Press [G] to toggle gravity",
-  "Press [S] to toggle springy balls (laggy)"
+  "Press [R] to toggle inverse square law"
 ]
 
 function draw() {
@@ -43,7 +45,7 @@ function draw() {
   }  
   
   colorMode(RGB);
-  strokeWeight(3)
+  strokeWeight(1)
   if (frameCount < tutorial.length*4*60) {
     if (Math.floor(frameCount / (60)) % 4 == 0) {
       colorMode(RGB);
@@ -73,7 +75,7 @@ function draw() {
 
 let borders = true;
 let gravity = false;
-let springy = false;
+let realistic = false;
 
 function keyPressed() {
   switch(keyCode) {
@@ -110,6 +112,17 @@ function keyPressed() {
       }
       break;
       
+
+    case 82:
+      if (realistic) {
+        console.log("realistic off");
+        realistic = false;
+      }
+      else {
+        console.log("realistic on");
+        realistic = true;
+      }
+      break;
     case 71:
       if (gravity) {
         console.log("gravity off");
@@ -120,17 +133,6 @@ function keyPressed() {
         gravity = true;
       }
       break;
-
-    case 83:
-      if (springy) {
-        console.log("springy off");
-        springy = false;
-      }
-      else {
-        console.log("springy on");
-        springy = true;
-      break;
-    }
   }
 }
 
@@ -143,25 +145,15 @@ class Ball {
   }
 
   do() {
-    if(springy) {
-      strokeWeight(2);
-      for (let i = 0; i < balls.length; i++) {
-        if (i != this.id) {
-          let dist = this.p.dist(balls[i].p)
-          colorMode(RGB)
-          stroke(255, 255, 255, map(dist, 0, 200, 127.5, 0))
-          colorMode(HSB)
-          line(this.p.x, this.p.y, balls[i].p.x, balls[i].p.y)
-  
-          this.v.add(p5.Vector.sub(balls[i].p, this.p).setMag(100/pow(dist+10, 2)))
-        }
-
-      }
-    }
 
     if(mouseIsPressed) {
       let x = p5.Vector.sub(mouse, this.p);
-      this.v.add(x.setMag(1));
+      if (realistic) {
+        this.v.add(x.setMag(cursorWeight/pow((x.mag() + 30), 2)));
+      }
+      else {
+        this.v.add(x.setMag(1));
+      }
     }
     else {
       if (gravity) {
